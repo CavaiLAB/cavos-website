@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "cavos-website",
   "builds": [
     {
       "src": "package.json",
@@ -10,22 +9,10 @@
       }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/(.*)\\.(html|json)$",
-      "headers": {
-        "Cache-Control": "public, max-age=0, must-revalidate"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/((?!api/.*).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -65,7 +52,6 @@
       "VITE_APP_DESCRIPTION": "智昌科技 - 具身智能时代的先行者"
     }
   },
-  "regions": ["hkg1", "sin1"],
   "github": {
     "silent": true
   }
