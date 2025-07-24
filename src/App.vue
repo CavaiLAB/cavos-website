@@ -47,7 +47,7 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-badge fade-in">
-            <span class="badge-text">Next-Gen AI Platform</span>
+            <span class="badge-text">agent as a service platform</span>
           </div>
           <h1 class="hero-title fade-in">
             <span class="title-main">CavOS</span>
@@ -598,6 +598,7 @@
             </div>
             <div class="vision-description">
               <p>为每一台机器、每一座工厂、每一条产业链安装"大脑"——"三元智能控制器"，构建集群式网络化的"泛机器人"生态，实现OT/IT深度融合。</p>
+              <p class="mission-content">致力于打造<strong>"个性化定制、规模化协同、网络化生产、智能化服务"</strong>的可持续进化产业新生态，为中国新型工业化重构新的制造体系，推动企业迈向科技创新驱动的现代化产业体系。</p>
             </div>
           </div>
           
@@ -605,28 +606,13 @@
             <div v-for="stat in companyStats" :key="stat.label" class="stat-card card-quantum fade-in">
               <div class="stat-visual">
                 <div class="stat-number" :ref="el => animateNumber(el, stat.value)">0</div>
-                <div class="stat-unit">+</div>
+                <div class="stat-unit"></div>
               </div>
               <div class="stat-label">{{ stat.label }}</div>
             </div>
           </div>
         </div>
-        
-        <div class="company-mission-section">
-          <h3 class="mission-title fade-in">使命愿景</h3>
-          <div class="mission-grid">
-            <div class="mission-card card-neural fade-in">
-              <div class="mission-icon">🎯</div>
-              <h4>核心使命</h4>
-              <p>打造<strong>"个性化定制、规模化协同、网络化生产、智能化服务"</strong>的可持续进化产业新生态</p>
-            </div>
-            <div class="mission-card card-quantum fade-in">
-              <div class="mission-icon">🚀</div>
-              <h4>发展愿景</h4>
-              <p>致力于为中国新型工业化重构新的制造体系，推动企业迈向科技创新驱动的现代化产业体系</p>
-            </div>
-          </div>
-        </div>
+
       </div>
     </section>
 
@@ -718,7 +704,7 @@
           </div>
           <div class="footer-info">
             <div class="footer-copyright">
-              <p>Copyright © 2024 智昌科技集团股份有限公司</p>
+              <p>Copyright © 2025 智昌科技集团股份有限公司</p>
             </div>
             <div class="footer-filing">
               <p>
@@ -899,10 +885,10 @@ export default {
 
 
     const companyStats = ref([
-      { value: 200, label: '博士团队' },
-      { value: 110, label: '3年销售额(亿元)' },
-      { value: 190, label: '发明专利' },
-      { value: 100, label: '头部企业案例' }
+      { value: 11, label: '3年销售额(亿元)' },
+      { value: 100, label: '全国百强企业案例' },
+      { value: 59, label: '注册商标' },
+      { value: 190, label: '发明专利' }
     ])
 
     const animateNumber = (element, targetValue) => {
@@ -1170,39 +1156,55 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: 600px;
+  perspective: 1000px;
 }
 
 .neural-network {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 500px;
+  transform-style: preserve-3d;
 }
 
 .network-core {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
+  transform: translate(-50%, -50%) translateZ(50px);
+  width: 100px;
+  height: 100px;
   background: var(--gradient-neural);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-neural);
+  box-shadow: 
+    var(--shadow-neural),
+    0 0 40px rgba(0, 212, 255, 0.6),
+    0 0 80px rgba(0, 212, 255, 0.3);
   z-index: 10;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.network-core:hover {
+  transform: translate(-50%, -50%) translateZ(60px) scale(1.05);
+  box-shadow: 
+    var(--shadow-neural),
+    0 0 60px rgba(0, 212, 255, 0.8),
+    0 0 120px rgba(0, 212, 255, 0.4);
 }
 
 .core-inner {
-  width: 60px;
-  height: 60px;
-  background: var(--bg-primary);
+  width: 75px;
+  height: 75px;
+  background: radial-gradient(circle, var(--bg-primary), rgba(0, 0, 0, 0.1));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid rgba(0, 212, 255, 0.3);
 }
 
 .core-text {
@@ -1216,17 +1218,44 @@ export default {
 
 .network-nodes {
   position: relative;
-  width: 100%;
+  width: 150%;
   height: 100%;
+  background-image: url('./img/3d.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.network-nodes:active {
+  transform: scale(0.98);
+  filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6)) brightness(1.2);
 }
 
 .node {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background: var(--color-neural);
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, var(--color-neural), rgba(0, 212, 255, 0.6));
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--color-neural);
+  box-shadow: 
+    0 0 15px var(--color-neural),
+    0 0 30px rgba(0, 212, 255, 0.4),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+  transform: translateZ(30px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.node:hover {
+  transform: translateZ(40px) scale(1.2);
+  box-shadow: 
+    0 0 25px var(--color-neural),
+    0 0 50px rgba(0, 212, 255, 0.6),
+    inset 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
 .node-1 { top: 10%; left: 20%; animation-delay: 0s; }
@@ -1247,9 +1276,11 @@ export default {
 
 .connection {
   position: absolute;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, var(--color-neural), transparent);
-  opacity: 0.6;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+  transform: translateZ(25px);
 }
 
 .connection-1 {
@@ -1601,6 +1632,18 @@ export default {
 @keyframes dataFlow {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+@keyframes networkFloat {
+  0%, 100% { 
+    transform: rotateX(5deg) rotateY(0deg) translateY(0px);
+  }
+  33% { 
+    transform: rotateX(10deg) rotateY(120deg) translateY(-10px);
+  }
+  66% { 
+    transform: rotateX(5deg) rotateY(240deg) translateY(5px);
+  }
 }
 
 @keyframes flowPulse {
@@ -2136,13 +2179,14 @@ export default {
 .company-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-6);
   height: 100%;
   align-content: center;
+  align-items: stretch;
 }
 
 .stat-card {
-  padding: var(--space-6);
+  padding: var(--space-8);
   text-align: center;
   transition: all var(--duration-normal) var(--easing-smooth);
 }
@@ -2723,7 +2767,7 @@ export default {
   
   /* Company */
   .company-stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-3);
   }
   
