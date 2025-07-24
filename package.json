@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "serve": "vite preview --port 3000",
+    "vercel-build": "vite build",
     "docker:build": "docker build -t cavos-website .",
     "docker:run": "docker run -p 3000:3000 cavos-website",
     "docker:dev": "docker-compose --profile dev up -d cavos-dev",
@@ -34,6 +35,9 @@
     "npm": ">=8.0.0"
   },
   "dependencies": {
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.10.35",
+    "three": "^0.178.0",
     "vue": "^3.3.4"
   },
   "devDependencies": {
