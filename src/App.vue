@@ -2364,16 +2364,18 @@ export default {
 }
 
 .footer-logo h3 {
-  color: var(--accent-color);
+  color: var(--color-neural);
   margin-bottom: 0.5rem;
 }
 
 .footer-info {
-  text-align: right;
+  text-align: center;
+  flex: 1;
 }
 
 .footer-copyright {
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .footer-filing {
