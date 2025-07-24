@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "WebFetch(domain:www.emergen.cn)"
+    ],
+    "deny": []
+  }
+}
