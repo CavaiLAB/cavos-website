@@ -152,15 +152,112 @@
           <p class="section-subtitle fade-in">分层设计的智能协同架构</p>
         </div>
         
-        <div class="architecture-stack">
-          <div class="arch-layer fade-in" v-for="(layer, index) in architectureLayers" :key="layer.id">
-            <div class="layer-index">L{{ architectureLayers.length - index }}</div>
-            <div class="layer-content">
-              <h3 class="layer-title">{{ layer.name }}</h3>
-              <div class="layer-components">
-                <div v-for="component in layer.components" :key="component" class="component-chip">
+        <div class="architecture-diagram fade-in">
+          <div class="diagram-container">
+            <!-- Layer 5: Applications & Interfaces -->
+            <div class="arch-layer-visual layer-5">
+              <div class="layer-header">
+                <div class="layer-number">L5</div>
+                <div class="layer-info">
+                  <h3 class="layer-name">应用层</h3>
+                  <p class="layer-subtitle">Applications & Interfaces</p>
+                </div>
+              </div>
+              <div class="layer-nodes">
+                <div class="node-item" v-for="component in architectureLayers[0].components" :key="component">
                   {{ component }}
                 </div>
+              </div>
+              <div class="layer-connections">
+                <div class="connection-line"></div>
+              </div>
+            </div>
+
+            <!-- Layer 4: Multi-Agent System -->
+            <div class="arch-layer-visual layer-4">
+              <div class="layer-header">
+                <div class="layer-number">L4</div>
+                <div class="layer-info">
+                  <h3 class="layer-name">核心层</h3>
+                  <p class="layer-subtitle">Multi-Agent System</p>
+                </div>
+              </div>
+              <div class="layer-nodes">
+                <div class="node-item featured" v-for="component in architectureLayers[1].components" :key="component">
+                  {{ component }}
+                </div>
+              </div>
+              <div class="layer-connections">
+                <div class="connection-line"></div>
+              </div>
+            </div>
+
+            <!-- Layer 3: Control & Communication -->
+            <div class="arch-layer-visual layer-3">
+              <div class="layer-header">
+                <div class="layer-number">L3</div>
+                <div class="layer-info">
+                  <h3 class="layer-name">通信层</h3>
+                  <p class="layer-subtitle">Control & Communication</p>
+                </div>
+              </div>
+              <div class="layer-nodes protocol-nodes">
+                <div class="node-item protocol" v-for="component in architectureLayers[2].components" :key="component">
+                  {{ component }}
+                </div>
+              </div>
+              <div class="layer-connections">
+                <div class="connection-line"></div>
+              </div>
+            </div>
+
+            <!-- Layer 2: Actuators -->
+            <div class="arch-layer-visual layer-2">
+              <div class="layer-header">
+                <div class="layer-number">L2</div>
+                <div class="layer-info">
+                  <h3 class="layer-name">执行层</h3>
+                  <p class="layer-subtitle">Actuators</p>
+                </div>
+              </div>
+              <div class="layer-nodes">
+                <div class="node-item" v-for="component in architectureLayers[3].components" :key="component">
+                  {{ component }}
+                </div>
+              </div>
+              <div class="layer-connections">
+                <div class="connection-line"></div>
+              </div>
+            </div>
+
+            <!-- Layer 1: Sensors -->
+            <div class="arch-layer-visual layer-1">
+              <div class="layer-header">
+                <div class="layer-number">L1</div>
+                <div class="layer-info">
+                  <h3 class="layer-name">感知层</h3>
+                  <p class="layer-subtitle">Sensors</p>
+                </div>
+              </div>
+              <div class="layer-nodes">
+                <div class="node-item sensor" v-for="component in architectureLayers[4].components" :key="component">
+                  {{ component }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Data Flow Indicators -->
+            <div class="data-flow-indicators">
+              <div class="flow-arrow upward" v-for="n in 4" :key="'up-' + n">
+                <svg width="24" height="40" viewBox="0 0 24 40">
+                  <defs>
+                    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1"/>
+                      <stop offset="100%" style="stop-color:#0066cc;stop-opacity:0.6"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 5 L12 35 M8 9 L12 5 L16 9" stroke="url(#flowGradient)" stroke-width="2" fill="none"/>
+                </svg>
               </div>
             </div>
           </div>
@@ -169,43 +266,15 @@
         <div class="protocols-section">
           <h3 class="protocols-title fade-in">双协议架构设计</h3>
           <div class="protocols-grid">
-            <div class="protocol-card card-quantum fade-in">
-              <div class="protocol-header">
-                <div class="protocol-icon">🔧</div>
-                <div class="protocol-meta">
-                  <h4>CMP协议</h4>
-                  <span class="protocol-type">设备管理</span>
-                </div>
-              </div>
-              <p class="protocol-description">所有设备的基础管理协议，确保可管可控</p>
-              <div class="protocol-features">
-                <div class="protocol-feature">
-                  <span class="feature-dot"></span>
-                  <span>设备生命周期管理</span>
-                </div>
-                <div class="protocol-feature">
-                  <span class="feature-dot"></span>
-                  <span>OTA升级与配置</span>
-                </div>
-                <div class="protocol-feature">
-                  <span class="feature-dot"></span>
-                  <span>监控告警系统</span>
-                </div>
-                <div class="protocol-feature">
-                  <span class="feature-dot"></span>
-                  <span>安全与权限控制</span>
-                </div>
-              </div>
-            </div>
             <div class="protocol-card card-neural fade-in">
               <div class="protocol-header">
                 <div class="protocol-icon">🧠</div>
                 <div class="protocol-meta">
-                  <h4>CCP协议</h4>
-                  <span class="protocol-type">智能协作</span>
+                  <h4>智能体协议</h4>
+                  <span class="protocol-type">MCP/A2A/ACP</span>
                 </div>
               </div>
-              <p class="protocol-description">高级智能设备的协作通信协议</p>
+              <p class="protocol-description">智能体间协作通信的标准协议集合</p>
               <div class="protocol-features">
                 <div class="protocol-feature">
                   <span class="feature-dot"></span>
@@ -225,6 +294,34 @@
                 </div>
               </div>
             </div>
+            <div class="protocol-card card-quantum fade-in">
+              <div class="protocol-header">
+                <div class="protocol-icon">🔧</div>
+                <div class="protocol-meta">
+                  <h4>Cav Management Protocol</h4>
+                  <span class="protocol-type">设备管理协议</span>
+                </div>
+              </div>
+              <p class="protocol-description">所有设备的基础管理协议，确保可管可控</p>
+              <div class="protocol-features">
+                <div class="protocol-feature">
+                  <span class="feature-dot"></span>
+                  <span>设备生命周期管理</span>
+                </div>
+                <div class="protocol-feature">
+                  <span class="feature-dot"></span>
+                  <span>Over-The-Air升级与配置</span>
+                </div>
+                <div class="protocol-feature">
+                  <span class="feature-dot"></span>
+                  <span>监控告警系统</span>
+                </div>
+                <div class="protocol-feature">
+                  <span class="feature-dot"></span>
+                  <span>安全与权限控制</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -233,14 +330,37 @@
     <!-- Intelligence Levels -->
     <section class="section">
       <div class="container">
-        <h2 class="section-title fade-in">智能分层体系</h2>
-        <div class="intelligence-levels">
-          <div v-for="level in intelligenceLevels" :key="level.level" class="level-card card tech-border">
-            <div class="level-badge">{{ level.level }}</div>
-            <h3>{{ level.name }}</h3>
-            <p class="level-tech">{{ level.tech }}</p>
-            <p class="level-scenario">{{ level.scenario }}</p>
-          </div>
+        <div class="section-header">
+          <h2 class="section-title fade-in">智能分层体系</h2>
+          <p class="section-subtitle fade-in">从基础模型到智能体互联网的六层进化体系</p>
+        </div>
+        <div class="intelligence-table-wrapper fade-in">
+          <table class="intelligence-table">
+            <thead>
+              <tr>
+                <th class="level-column">智能等级</th>
+                <th class="name-column">层级名称</th>
+                <th class="tech-column">核心技术</th>
+                <th class="scenario-column">应用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="level in intelligenceLevels" :key="level.level" class="intelligence-row">
+                <td class="level-cell">
+                  <div class="level-badge">{{ level.level }}</div>
+                </td>
+                <td class="name-cell">
+                  <div class="level-name">{{ level.name }}</div>
+                </td>
+                <td class="tech-cell">
+                  <div class="level-tech">{{ level.tech }}</div>
+                </td>
+                <td class="scenario-cell">
+                  <div class="level-scenario">{{ level.scenario }}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -625,45 +745,45 @@ export default {
     const coreFeatures = ref([
       {
         id: 1,
-        icon: '🧠',
-        title: '智能控制中心',
-        description: '3D可视化控制平台，支持手动控制、自动编排和场景模板',
-        capabilities: ['3D可视化控制', '拖拽式编程', '一键部署', '实时监控']
+        icon: '🤖',
+        title: '模型接入',
+        description: '模型接入模块提供对各种AI模型的统一接入和管理能力，包括大语言模型、具身模型、计算机视觉模型等。这个模块确保不同类型的模型能够在统一的框架下协同工作。',
+        capabilities: ['大语言模型接入', '具身模型支持', '计算机视觉模型', '统一框架协同']
       },
       {
         id: 2,
-        icon: '🔧',
-        title: '设备管理平台',
-        description: '统一设备接入与管理，支持自动发现、批量管理和远程运维',
-        capabilities: ['设备自动发现', '批量管理', 'OTA升级', '远程运维']
+        icon: '⚡',
+        title: '工作流引擎',
+        description: '可视化流程设计平台，支持智能体工作流编排、软硬件混编和智能调度，提供拖拽式编程和实时调试能力',
+        capabilities: ['可视化流程设计', '智能体工作流', '软硬件混编', '实时调试部署']
       },
       {
         id: 3,
-        icon: '🤖',
-        title: '模型服务中心',
-        description: '多模型支持与管理，提供推理服务、边缘部署和成本优化',
-        capabilities: ['多模型支持', '边缘部署', '推理优化', '成本控制']
+        icon: '👤',
+        title: '智能体构建',
+        description: '提供智能体的设计、开发和配置工具，包括上下文管理、协议支持和工作流编排等功能，大大降低了智能体开发的技术门槛',
+        capabilities: ['Prompt工程', '知识库集成', 'MCP/A2A/ACP协议', '低代码构建']
       },
       {
         id: 4,
-        icon: '⚡',
-        title: '工作流引擎',
-        description: '可视化流程设计，支持软硬件混编和智能调度',
-        capabilities: ['可视化编辑', '软硬混编', '智能调度', '实时调试']
+        icon: '📈',
+        title: '运营监控',
+        description: '提供智能体运行状态的实时监控和管理功能，集成3D可视化大屏、性能监控、异常检测等AgentOps功能，确保系统稳定运行',
+        capabilities: ['3D可视化监控', '性能实时监控', '异常智能检测', 'AgentOps运维']
       },
       {
         id: 5,
-        icon: '🛒',
-        title: '技能市场',
-        description: '开放的技能生态，支持即插即用、收益分成和标准化接入',
-        capabilities: ['即插即用', '收益分成', '标准接入', '技术支持']
+        icon: '🎓',
+        title: '模型训练',
+        description: '提供模型的持续训练和优化能力，包括训练任务管理、数据可视化、数据集管理等功能，使得智能体能够持续学习和改进',
+        capabilities: ['训练任务管理', '数据可视化分析', '数据集智能管理', '持续学习优化']
       },
       {
         id: 6,
-        icon: '📊',
-        title: '数据分析平台',
-        description: '实时监控与智能分析，提供3D大屏、AI洞察和预测分析',
-        capabilities: ['3D可视化', 'AI洞察', '预测分析', '智能报表']
+        icon: '🛒',
+        title: 'MCP市场',
+        description: '开放的MCP协议生态市场，支持智能体组件即插即用、收益分成和标准化接入，构建繁荣的智能体开发者生态',
+        capabilities: ['MCP组件市场', '即插即用集成', '收益分成机制', '标准化API接入']
       }
     ])
 
@@ -681,7 +801,7 @@ export default {
       {
         id: 3,
         name: '通信层 Control & Communication',
-        components: ['CMP协议 设备管理', 'CCP协议 智能协作']
+        components: ['智能体协议 MCP/A2A/ACP', 'Cav Management Protocol 设备管理']
       },
       {
         id: 4,
@@ -1261,69 +1381,231 @@ export default {
   flex-shrink: 0;
 }
 
-/* Architecture Section */
-.architecture-stack {
+/* Architecture Diagram */
+.architecture-diagram {
   margin-bottom: var(--space-16);
+  padding: var(--space-8) 0;
 }
 
-.arch-layer {
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  padding: var(--space-6);
-  margin-bottom: var(--space-4);
+.diagram-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-radius: var(--space-4);
+  border-radius: var(--space-6);
+  padding: var(--space-8);
   backdrop-filter: blur(16px);
-  transition: all var(--duration-normal) var(--easing-smooth);
-}
-
-.arch-layer:hover {
-  transform: translateX(var(--space-2));
-  border-color: var(--border-neural);
   box-shadow: var(--shadow-neural);
 }
 
-.layer-index {
+.arch-layer-visual {
+  position: relative;
+  margin-bottom: var(--space-8);
+  padding: var(--space-6);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 212, 255, 0.02));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: var(--space-4);
+  transition: all var(--duration-normal) var(--easing-smooth);
+}
+
+.arch-layer-visual:hover {
+  transform: translateY(-var(--space-1));
+  border-color: var(--border-neural);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.15);
+}
+
+.arch-layer-visual:last-child {
+  margin-bottom: 0;
+}
+
+.layer-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.layer-number {
   background: var(--gradient-neural);
-  color: var(--color-void);
+  color: var(--text-primary);
   font-size: var(--font-size-lg);
   font-weight: 800;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: var(--shadow-neural);
+  position: relative;
 }
 
-.layer-content {
+.layer-number::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--gradient-neural);
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.layer-info {
   flex: 1;
 }
 
-.layer-title {
-  font-size: var(--font-size-lg);
+.layer-name {
+  font-size: var(--font-size-xl);
   font-weight: 700;
-  margin-bottom: var(--space-3);
-  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.layer-components {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+.layer-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0;
 }
 
-.component-chip {
-  background: rgba(0, 212, 255, 0.1);
-  color: var(--color-neural);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--space-4);
+.layer-nodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.node-item {
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: var(--text-secondary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--space-3);
   font-size: var(--font-size-sm);
   font-weight: 500;
-  border: 1px solid var(--border-neural);
+  text-align: center;
+  transition: all var(--duration-normal) var(--easing-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.node-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.node-item:hover {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--color-neural);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.node-item:hover::before {
+  left: 100%;
+}
+
+.node-item.featured {
+  background: var(--gradient-neural);
+  color: var(--text-primary);
+  border-color: var(--color-neural);
+  font-weight: 600;
+}
+
+.node-item.protocol {
+  background: rgba(255, 139, 53, 0.1);
+  border-color: rgba(255, 139, 53, 0.4);
+  color: var(--orange-accent);
+}
+
+.node-item.sensor {
+  background: rgba(106, 90, 205, 0.1);
+  border-color: rgba(106, 90, 205, 0.4);
+}
+
+.layer-connections {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-neural), transparent);
+  opacity: 0.6;
+  margin-top: var(--space-2);
+}
+
+.connection-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--color-neural), transparent);
+  animation: dataFlow 3s linear infinite;
+}
+
+.data-flow-indicators {
+  position: absolute;
+  right: var(--space-4);
+  top: var(--space-8);
+  bottom: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  pointer-events: none;
+}
+
+.flow-arrow {
+  animation: flowPulse 2s ease-in-out infinite;
+}
+
+.flow-arrow:nth-child(2) { animation-delay: 0.5s; }
+.flow-arrow:nth-child(3) { animation-delay: 1s; }
+.flow-arrow:nth-child(4) { animation-delay: 1.5s; }
+
+/* Layer-specific styling */
+.layer-5 {
+  border-left: 4px solid var(--color-neural);
+}
+
+.layer-4 {
+  border-left: 4px solid var(--orange-accent);
+  background: linear-gradient(135deg, rgba(255, 139, 53, 0.08), rgba(255, 139, 53, 0.02));
+}
+
+.layer-3 {
+  border-left: 4px solid #6a5acd;
+  background: linear-gradient(135deg, rgba(106, 90, 205, 0.08), rgba(106, 90, 205, 0.02));
+}
+
+.layer-2 {
+  border-left: 4px solid #32cd32;
+  background: linear-gradient(135deg, rgba(50, 205, 50, 0.08), rgba(50, 205, 50, 0.02));
+}
+
+.layer-1 {
+  border-left: 4px solid #ff6b6b;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(255, 107, 107, 0.02));
+}
+
+/* Animations */
+@keyframes dataFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes flowPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
 }
 
 /* Protocols Section */
@@ -1580,40 +1862,141 @@ export default {
   font-size: 0.9rem;
 }
 
-/* Intelligence Levels */
-.intelligence-levels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+/* Intelligence Levels Table */
+.intelligence-table-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--space-4);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-neural);
 }
 
-.level-card {
-  text-align: center;
+.intelligence-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+}
+
+.intelligence-table thead {
+  background: var(--gradient-neural);
   position: relative;
 }
 
+.intelligence-table thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-neural);
+  opacity: 0.3;
+}
+
+.intelligence-table th {
+  padding: var(--space-6) var(--space-4);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(0, 212, 255, 0.1);
+  border-bottom: 2px solid var(--border-neural);
+}
+
+.intelligence-table th:first-child {
+  text-align: center;
+  width: 120px;
+}
+
+.intelligence-table th:nth-child(2) {
+  width: 25%;
+}
+
+.intelligence-table th:nth-child(3) {
+  width: 35%;
+}
+
+.intelligence-table th:nth-child(4) {
+  width: 30%;
+}
+
+.intelligence-row {
+  transition: all var(--duration-normal) var(--easing-smooth);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.intelligence-row:hover {
+  background: rgba(0, 212, 255, 0.03);
+  transform: scale(1.01);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+}
+
+.intelligence-row:last-child {
+  border-bottom: none;
+}
+
+.intelligence-table td {
+  padding: var(--space-6) var(--space-4);
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.level-cell {
+  text-align: center;
+  width: 120px;
+}
+
 .level-badge {
-  background: var(--accent-color);
-  color: var(--bg-dark);
-  width: 60px;
-  height: 60px;
+  background: var(--gradient-neural);
+  color: var(--text-primary);
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 0 auto 1rem;
+  font-weight: 800;
+  font-size: var(--font-size-lg);
+  box-shadow: var(--shadow-neural);
+  position: relative;
+}
+
+.level-badge::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: var(--gradient-neural);
+  z-index: -1;
+  opacity: 0.2;
+}
+
+.level-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .level-tech {
-  color: var(--secondary-color);
+  color: var(--text-secondary);
   font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
 }
 
 .level-scenario {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 /* Advantages */
@@ -2093,6 +2476,40 @@ export default {
     grid-template-columns: 1fr;
   }
   
+  /* Intelligence Table Mobile */
+  .intelligence-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .intelligence-table {
+    min-width: 600px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .intelligence-table th,
+  .intelligence-table td {
+    padding: var(--space-4) var(--space-3);
+  }
+  
+  .level-badge {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-base);
+  }
+  
+  .level-name {
+    font-size: var(--font-size-base);
+  }
+  
+  .level-tech {
+    font-size: var(--font-size-sm);
+  }
+  
+  .level-scenario {
+    font-size: var(--font-size-xs);
+  }
+  
   /* Solutions */
   .solutions-grid {
     grid-template-columns: 1fr;
@@ -2109,17 +2526,44 @@ export default {
     align-self: center;
   }
   
-  /* Architecture */
-  .arch-layer {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-4);
+  /* Architecture Diagram Mobile */
+  .diagram-container {
+    padding: var(--space-4);
   }
   
-  .layer-index {
-    width: 50px;
-    height: 50px;
+  .arch-layer-visual {
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  
+  .layer-header {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-3);
+  }
+  
+  .layer-number {
+    width: 45px;
+    height: 45px;
     font-size: var(--font-size-base);
+  }
+  
+  .layer-name {
+    font-size: var(--font-size-lg);
+  }
+  
+  .layer-nodes {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-2);
+  }
+  
+  .node-item {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+  
+  .data-flow-indicators {
+    display: none;
   }
   
   /* Company section */
@@ -2186,6 +2630,74 @@ export default {
   }
   
   .pill-text {
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Intelligence Table Extra Small */
+  .intelligence-table {
+    min-width: 480px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .intelligence-table th,
+  .intelligence-table td {
+    padding: var(--space-3) var(--space-2);
+  }
+  
+  .intelligence-table th {
+    font-size: var(--font-size-xs);
+  }
+  
+  .level-badge {
+    width: 35px;
+    height: 35px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .level-name {
+    font-size: var(--font-size-sm);
+  }
+  
+  .level-tech {
+    font-size: var(--font-size-xs);
+  }
+  
+  .level-scenario {
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Architecture Diagram Extra Small */
+  .diagram-container {
+    padding: var(--space-3);
+    margin: 0 var(--space-2);
+  }
+  
+  .arch-layer-visual {
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+  
+  .layer-number {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .layer-name {
+    font-size: var(--font-size-base);
+  }
+  
+  .layer-subtitle {
+    font-size: var(--font-size-xs);
+  }
+  
+  .layer-nodes {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-1);
+  }
+  
+  .node-item {
+    padding: var(--space-2);
     font-size: var(--font-size-xs);
   }
   
