@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  # 主应用服务
+  cavos-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: cavos-website
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - cavos-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cavos.rule=Host(`localhost`)"
+      - "traefik.http.services.cavos.loadbalancer.server.port=3000"
+
+  # 开发环境服务（可选）
+  cavos-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: cavos-website-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: pnpm dev --host 0.0.0.0
+    restart: unless-stopped
+    networks:
+      - cavos-network
+    profiles:
+      - dev
+
+  # Nginx 反向代理（生产环境可选）
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: cavos-nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - cavos-website
+    restart: unless-stopped
+    networks:
+      - cavos-network
+    profiles:
+      - proxy
+
+  # Redis 缓存（如需要）
+  redis:
+    image: redis:7-alpine
+    container_name: cavos-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - cavos-network
+    profiles:
+      - cache
+
+networks:
+  cavos-network:
+    driver: bridge
+    name: cavos-network
+
+volumes:
+  redis-data:
+    driver: local
+
+# 使用示例：
+# 生产环境：docker-compose up -d
+# 开发环境：docker-compose --profile dev up -d cavos-dev
+# 带代理：docker-compose --profile proxy up -d
+# 带缓存：docker-compose --profile cache up -d
