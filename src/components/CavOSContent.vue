@@ -727,6 +727,8 @@ export default {
   background: var(--gradient-cosmic);
   position: relative;
   padding: var(--space-20) 0 var(--space-16) 0;
+  /* 确保不会遮挡移动端导航 */
+  z-index: 1;
 }
 
 .hero .container {
@@ -1700,6 +1702,23 @@ export default {
   .neural-network {
     width: 280px;
     height: 280px;
+    /* 修复移动端交互问题 */
+    pointer-events: none;
+  }
+  
+  .network-nodes {
+    /* 移动端禁用交互以避免导航冲突 */
+    pointer-events: none;
+  }
+  
+  .network-core {
+    /* 移动端禁用交互以避免导航冲突 */
+    pointer-events: none;
+  }
+  
+  .node {
+    /* 移动端禁用交互以避免导航冲突 */
+    pointer-events: none;
   }
   
   .title-main {
@@ -1816,11 +1835,15 @@ export default {
   .neural-network {
     width: 220px;
     height: 220px;
+    /* 继承移动端交互禁用 */
+    pointer-events: none;
   }
   
   .network-core {
     width: 60px;
     height: 60px;
+    /* 继承移动端交互禁用 */
+    pointer-events: none;
   }
   
   .core-inner {
