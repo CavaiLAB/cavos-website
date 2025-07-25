@@ -893,12 +893,14 @@ export default {
 
 .network-nodes {
   position: relative;
-  width: 150%;
+  width: 100%;
   height: 100%;
   opacity: 0.9;
   filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
   cursor: pointer;
   transition: all 0.3s ease;
+  /* 防止溢出 */
+  overflow: hidden;
 }
 
 .network-nodes:active {

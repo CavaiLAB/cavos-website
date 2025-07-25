@@ -99,6 +99,21 @@ export default {
   display: none;
   border-bottom: 1px solid var(--border-neural, rgba(0, 212, 255, 0.2));
   box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+  
+  /* 修复iOS Safari固定定位问题 */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* 支持安全区域（刘海屏等） */
+  padding-left: max(var(--space-5, 1.25rem), env(safe-area-inset-left));
+  padding-right: max(var(--space-5, 1.25rem), env(safe-area-inset-right));
+  padding-top: max(var(--space-4, 1rem), env(safe-area-inset-top));
+  
+  /* 确保宽度不溢出 */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .nav-header {
@@ -186,12 +201,24 @@ export default {
   left: -320px;
   width: 300px;
   height: 100vh;
+  height: 100dvh; /* 动态视口高度，避免地址栏影响 */
   background: var(--gradient-cosmic, linear-gradient(135deg, var(--color-void) 0%, var(--color-cosmos) 50%, var(--color-nebula) 100%));
   backdrop-filter: blur(20px);
   transition: left var(--duration-normal, 300ms) var(--easing-smooth, cubic-bezier(0.4, 0, 0.2, 1));
   z-index: 9998;
   border-right: 1px solid var(--border-neural, rgba(0, 212, 255, 0.2));
   box-shadow: var(--shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.1));
+  
+  /* 修复iOS Safari固定定位问题 */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  /* 支持安全区域 */
+  padding-left: env(safe-area-inset-left);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .nav-menu.active {
@@ -347,12 +374,19 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  height: 100dvh; /* 动态视口高度 */
   background: rgba(10, 14, 26, 0.8);
   backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
   transition: all var(--duration-normal, 300ms) var(--easing-smooth, cubic-bezier(0.4, 0, 0.2, 1));
   z-index: 9997;
+  
+  /* 修复iOS Safari固定定位问题 */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .nav-overlay.active {

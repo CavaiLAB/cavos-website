@@ -59,12 +59,26 @@
   box-sizing: border-box;
 }
 
+html {
+  /* 防止iOS Safari缩放 */
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* 支持安全区域 */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  /* 防止橡皮筋效果和优化滚动 */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: none;
+  /* 确保宽度不溢出 */
+  width: 100%;
+  max-width: 100vw;
 }
 
 .container {
@@ -348,5 +362,59 @@ body {
   
   .section-subtitle {
     font-size: var(--font-size-base);
+  }
+}
+
+/* 防止元素溢出的通用样式 */
+img, 
+video, 
+canvas, 
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+/* 确保所有容器不溢出 */
+* {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* iOS Safari滚动优化 */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  body {
+    /* 改善iOS Safari的滚动表现 */
+    position: relative;
+  }
+}
+
+/* 专门针对移动端的优化 */
+@media (max-width: 768px) {
+  /* 确保所有元素不超出屏幕宽度 */
+  * {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* 防止表格溢出 */
+  table {
+    width: 100% !important;
+    min-width: auto !important;
+  }
+  
+  /* 确保容器响应式 */
+  .container {
+    width: 100%;
+    max-width: 100vw;
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
   }
 }
