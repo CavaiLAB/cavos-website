@@ -1,273 +1,212 @@
-# CavOS - 具身智能AaaS平台
+# 智昌具身智能官网
 
-> 智能机器人云边协同操作系统，连接现实与数字世界的桥梁
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/CavaiLAB/cavos-website)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D16.0.0-brightgreen)](https://nodejs.org/)
+> 连接现实与数字世界的桥梁 - 智能机器人云边协同操作系统
 
 ## 🌟 项目简介
 
-CavOS是智昌科技集团开发的具身智能AaaS（Agent as a Service）平台官网，展示了智能机器人云边协同操作系统的核心功能和技术架构。该平台让每个机器人都拥有智慧大脑，让智能无处不在。
+智昌具身智能官网是展示智昌科技集团核心产品和技术能力的现代化网站，包含CavOS系统、CavScada监控、CavData服务等核心产品展示。网站采用Vue 3 + Vite构建，具有完整的H5移动端适配和现代化UI设计。
 
-### 🎯 核心特色
+## 🚀 核心特性
 
-- **🧠 智能大脑** - 先进的AI模型和算法
-- **⚡ 实时响应** - 毫秒级的决策和执行
-- **🌐 云边协同** - 云端智能与边缘计算完美结合
-- **🔗 万物互联** - 连接现实与数字世界
+### 📱 完整H5移动端适配
+- ✅ 响应式导航系统
+- ✅ 触摸友好的交互设计
+- ✅ 汉堡菜单和侧滑导航
+- ✅ 完美适配各种移动设备
 
-## 🚀 技术栈
+### 🎨 现代化设计
+- ✅ 渐变色彩和动画效果
+- ✅ 3D视觉元素和交互
+- ✅ 神经网络风格UI
+- ✅ 暗色主题设计
 
-- **前端框架**: Vue 3.3.4
-- **构建工具**: Vite 4.4.9
-- **3D渲染**: Three.js 0.178.0 + Spline Runtime
-- **样式方案**: 原生CSS3 + CSS Grid + Flexbox
-- **部署平台**: Vercel / Docker
-- **开发语言**: JavaScript (ES6+)
+### 🛠 技术栈
+- **前端框架**: Vue 3 + Composition API
+- **构建工具**: Vite 4
+- **3D渲染**: Three.js + Spline
+- **样式**: CSS3 + 自定义变量
+- **部署**: Netlify + GitHub Actions
 
 ## 📦 快速开始
 
 ### 环境要求
-
 - Node.js >= 16.0.0
 - npm >= 8.0.0
 
-### 安装与运行
-
+### 安装依赖
 ```bash
-# 克隆项目
-git clone https://github.com/CavaiLAB/cavos-website.git
-cd cavos-website
-
-# 安装依赖
 npm install
-
-# 启动开发服务器
-npm run dev
-
-# 访问 http://localhost:5173
 ```
 
-### 构建部署
-
+### 开发模式
 ```bash
-# 构建生产版本
-npm run build
+npm run dev
+```
+访问 http://localhost:5173
 
-# 预览构建结果
+### 构建生产版本
+```bash
+npm run build
+```
+
+### 预览构建结果
+```bash
 npm run preview
 ```
 
-## 🐳 Docker 部署
+## 🌐 部署方式
 
-### 快速启动
+### 1. 自动部署到Netlify（推荐）
 
+#### GitHub Actions自动部署
+1. 配置GitHub Secrets：
+   - `NETLIFY_AUTH_TOKEN`: Netlify访问令牌
+   - `NETLIFY_SITE_ID`: Netlify站点ID
+
+2. 推送代码到main分支，自动触发部署
+
+#### 手动部署
 ```bash
-# 构建并运行
+# 使用部署脚本
+npm run netlify:deploy
+
+# 或者直接部署
+npm run netlify:build
+```
+
+### 2. CloudStudio部署
+项目已部署到CloudStudio：
+- 预览地址: http://45f8f9de730c4b378c99e5131a92e0e1.ap-singapore.myide.io
+
+### 3. Docker部署
+```bash
+# 构建镜像
 npm run docker:build
+
+# 运行容器
 npm run docker:run
 
-# 或使用 Docker Compose
+# 使用docker-compose
 npm run docker:prod
 ```
 
-### Docker Compose 配置
+## 📱 移动端功能
 
-```bash
-# 开发环境
-npm run docker:dev
+### 导航系统
+- **汉堡菜单**: 三条横线按钮，点击展开导航
+- **侧滑菜单**: 从左侧滑出的全屏导航菜单
+- **触摸优化**: 大尺寸按钮，适合手指操作
+- **动画效果**: 流畅的CSS3动画和过渡
 
-# 生产环境
-npm run docker:prod
+### 响应式布局
+- **桌面端**: 保持原有导航栏设计
+- **平板端**: 自适应布局调整
+- **手机端**: 完全重新设计的移动界面
+- **超小屏**: 全屏菜单和优化布局
 
-# 停止服务
-npm run docker:stop
-```
-
-## 🏗️ 项目架构
+## 🏗 项目结构
 
 ```
 cavos-website/
 ├── src/
-│   ├── App.vue              # 主应用组件（单页面应用）
-│   ├── main.js              # Vue应用入口
-│   ├── img/                 # 图片资源
-│   │   └── 3d.png
-│   └── styles/
-│       └── global.css       # 全局样式和设计系统
-├── public/                  # 静态资源
-├── .claude/                 # Claude AI配置
-├── index.html               # HTML模板
-├── package.json             # 项目配置
-├── vite.config.js           # Vite构建配置
-├── Dockerfile               # Docker镜像配置
-├── docker-compose.yml       # Docker Compose配置
-├── vercel.json              # Vercel部署配置
-└── README.md                # 项目文档
+│   ├── components/          # Vue组件
+│   │   ├── MobileNav.vue   # 移动端导航组件
+│   │   ├── HomeContent.vue # 首页内容
+│   │   ├── CavOSContent.vue # CavOS系统页面
+│   │   ├── CavScadaContent.vue # CavScada监控页面
+│   │   └── CavDataContent.vue # CavData服务页面
+│   ├── styles/             # 样式文件
+│   │   ├── global.css      # 全局样式
+│   │   └── variables.css   # CSS变量
+│   ├── App.vue            # 主应用组件
+│   └── main.js            # 应用入口
+├── public/                # 静态资源
+├── .github/workflows/     # GitHub Actions
+├── scripts/               # 部署脚本
+├── netlify.toml          # Netlify配置
+├── DEPLOYMENT.md         # 部署指南
+└── README.md            # 项目说明
 ```
 
-## 🎨 功能模块
+## 🎯 核心产品
 
-### 核心功能展示
+### CavOS系统
+- 智能机器人云边协同操作系统
+- 多智能体协同架构
+- 双协议设计（智能体协议 + 设备管理协议）
+- 六层智能分级体系
 
-1. **模型接入模块** - 统一AI模型接入和管理
-   - 大语言模型接入
-   - 具身模型支持
-   - 计算机视觉模型
-   - 统一框架协同
+### CavScada监控
+- 实时数据监控和可视化
+- 工业级SCADA系统
+- 多维度数据分析
+- 智能告警和预警
 
-2. **工作流引擎** - 可视化流程设计平台
-   - 可视化流程设计
-   - 智能体工作流
-   - 软硬件混编
-   - 实时调试部署
-
-3. **智能体构建** - 低代码智能体开发
-   - Prompt工程
-   - 知识库集成
-   - MCP/A2A/ACP协议
-   - 低代码构建
-
-4. **运营监控** - 实时监控和管理
-   - 3D可视化监控
-   - 性能实时监控
-   - 异常智能检测
-   - AgentOps运维
-
-5. **模型训练** - 持续学习优化
-   - 训练任务管理
-   - 数据可视化分析
-   - 数据集智能管理
-   - 持续学习优化
-
-6. **MCP市场** - 开放生态市场
-   - MCP组件市场
-   - 即插即用集成
-   - 收益分成机制
-   - 标准化API接入
-
-### 技术架构层次
-
-- **应用层**: 基础模型、数据分析、业务应用、智能体系统、多智能体协同
-- **核心层**: 云端智能CavBrain、边缘智能CavVLA、任务规划、模型服务、共享记忆
-- **通信层**: 智能体协议MCP/A2A/ACP、Cav Management Protocol设备管理
-- **执行层**: API接口、数据系统、机器人、机械臂、无人机
-
-## 🎯 解决方案
-
-- **智能制造** - 工业机器人智能化升级
-- **仓储物流** - 自动化仓储和配送系统
-- **服务机器人** - 商用和家用服务机器人
-- **无人系统** - 无人机、无人车等自主系统
+### CavData服务
+- 大数据处理和分析
+- 机器学习模型训练
+- 数据可视化展示
+- API服务接口
 
 ## 🔧 开发指南
 
-### 代码规范
+### 添加新页面
+1. 在`src/components/`创建新的Vue组件
+2. 在`App.vue`中注册组件
+3. 更新导航菜单项
+4. 添加路由逻辑
 
-- 使用ES6+现代JavaScript语法
-- Vue 3 Composition API优先
-- CSS变量统一管理设计系统
-- 响应式设计适配多端设备
+### 移动端适配
+- 使用`@media (max-width: 768px)`媒体查询
+- 确保触摸目标至少48px
+- 测试各种屏幕尺寸
+- 优化加载性能
 
-### 样式系统
+### 样式规范
+- 使用CSS变量定义颜色和尺寸
+- 遵循BEM命名规范
+- 保持响应式设计
+- 使用现代CSS特性
 
-项目采用CSS变量构建的设计系统：
+## 📊 性能优化
 
-```css
-:root {
-  /* 颜色系统 */
-  --color-neural: #00d4ff;
-  --gradient-neural: linear-gradient(135deg, #00d4ff, #0099cc);
-  
-  /* 间距系统 */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  /* ... */
-  
-  /* 字体系统 */
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  /* ... */
-}
-```
+- ✅ 代码分割和懒加载
+- ✅ 图片压缩和优化
+- ✅ CSS和JS压缩
+- ✅ Gzip压缩
+- ✅ CDN加速
+- ✅ 缓存策略
 
-### 动画效果
+## 🔒 安全配置
 
-- 神经网络可视化动画
-- 粒子效果背景
-- 卡片悬停交互
-- 渐入渐出过渡
-
-## 📱 响应式设计
-
-- **桌面端**: >= 1024px
-- **平板端**: 768px - 1023px
-- **手机端**: < 768px
-- **小屏手机**: < 480px
-
-## 🚀 部署方案
-
-### Vercel 部署（推荐）
-
-1. Fork 本仓库
-2. 在 [Vercel](https://vercel.com) 导入项目
-3. 自动检测配置并部署
-4. 获得生产环境URL
-
-### 自定义部署
-
-```bash
-# 构建静态文件
-npm run build
-
-# 部署 dist/ 目录到任意静态服务器
-```
+- ✅ HTTPS强制重定向
+- ✅ 安全头部设置
+- ✅ XSS防护
+- ✅ 内容安全策略
+- ✅ 防点击劫持
 
 ## 🤝 贡献指南
 
-1. Fork 项目仓库
-2. 创建功能分支: `git checkout -b feature/amazing-feature`
-3. 提交更改: `git commit -m 'Add amazing feature'`
-4. 推送分支: `git push origin feature/amazing-feature`
-5. 提交 Pull Request
-
-### 提交规范
-
-```bash
-feat: 新功能
-fix: 修复问题
-style: 样式更新
-docs: 文档更新
-refactor: 代码重构
-test: 测试相关
-chore: 构建/工具相关
-```
+1. Fork项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 创建Pull Request
 
 ## 📄 许可证
 
-本项目基于 [MIT License](LICENSE) 开源协议。
+本项目采用MIT许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
 
 ## 📞 联系我们
 
-- **官网**: [https://www.zhichangtech.com](https://www.zhichangtech.com)
-- **GitHub**: [https://github.com/CavaiLAB](https://github.com/CavaiLAB)
-- **项目主页**: [https://cavos-website.vercel.app](https://cavos-website.vercel.app)
-- **技术支持**: 400-1040-788
+- **官网**: https://cavos-website.vercel.app
+- **GitHub**: https://github.com/CavaiLAB/cavos-website
+- **邮箱**: contact@cavai.com
 
-## 🏆 关于智昌科技
+## 🙏 致谢
 
-智昌科技集团是具身智能时代的先行者，专注于智能机器人技术的研发和产业化应用。我们致力于让每个机器人都拥有智慧大脑，推动智能制造和服务机器人产业的发展。
-
-### 核心数据
-
-- 🏢 **3年销售额**: 超11亿
-- 🏆 **全国百强企业案例**: 100+
-- 📋 **注册商标**: 59个
-- 💡 **发明专利**: 190个
+感谢所有为这个项目做出贡献的开发者和设计师！
 
 ---
 
-**让智能无处不在，连接现实与数字世界** 🚀
-
-© 2024 智昌科技集团. 保留所有权利.
+**智昌科技集团** - 具身智能时代的先行者
