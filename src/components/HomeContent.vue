@@ -16,15 +16,15 @@
             <br>为每一台机器、每一座工厂、每一条产业链安装"大脑"。
           </p>
           <div class="hero-features fade-in">
-            <div class="feature-pill">
+            <div class="feature-pill" @click="$emit('product-change', 'cavos')">
               <span class="pill-icon">🧠</span>
               <span class="pill-text">CavOS</span>
             </div>
-            <div class="feature-pill">
+            <div class="feature-pill" @click="$emit('product-change', 'cavscada')">
               <span class="pill-icon">📊</span>
               <span class="pill-text">CavScada</span>
             </div>
-            <div class="feature-pill">
+            <div class="feature-pill" @click="$emit('product-change', 'cavdata')">
               <span class="pill-icon">💾</span>
               <span class="pill-text">CavData</span>
             </div>
