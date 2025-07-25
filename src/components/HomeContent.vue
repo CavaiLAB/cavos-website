@@ -315,11 +315,14 @@ export default {
   background-image: url('../img/3d.png');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   opacity: 0.9;
   filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .network-nodes:active {
@@ -521,6 +524,12 @@ export default {
     height: 280px;
   }
   
+  .network-nodes {
+    width: 120%;
+    background-size: contain;
+    background-position: center center;
+  }
+  
   .title-main {
     font-size: var(--font-size-5xl);
   }
@@ -538,6 +547,12 @@ export default {
   .neural-network {
     width: 220px;
     height: 220px;
+  }
+  
+  .network-nodes {
+    width: 130%;
+    background-size: contain;
+    background-position: center center;
   }
   
   .network-core {
