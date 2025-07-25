@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <!-- Navigation -->
+    <!-- Mobile Navigation -->
+    <MobileNav @navigate="setActiveProduct" />
+    
+    <!-- Desktop Navigation -->
     <nav class="navbar">
       <div class="container">
         <div class="nav-content">
@@ -100,7 +103,7 @@
           <div class="company-stats-grid">
             <div v-for="stat in companyStats" :key="stat.label" class="stat-card card-quantum fade-in">
               <div class="stat-visual">
-                <div class="stat-number" :ref="el => animateNumber(el, stat.value)">0</div>
+                <div class="stat-number" ref="statNumber">0</div>
                 <div class="stat-unit"></div>
               </div>
               <div class="stat-label">{{ stat.label }}</div>
@@ -222,6 +225,7 @@ import HomeContent from './components/HomeContent.vue'
 import CavOSContent from './components/CavOSContent.vue'
 import CavScadaContent from './components/CavScadaContent.vue'
 import CavDataContent from './components/CavDataContent.vue'
+import MobileNav from './components/MobileNav.vue'
 import './styles/variables.css'
 
 export default {
@@ -230,7 +234,8 @@ export default {
     HomeContent,
     CavOSContent,
     CavScadaContent,
-    CavDataContent
+    CavDataContent,
+    MobileNav
   },
   setup() {
     const activeProduct = ref('home')
@@ -286,7 +291,7 @@ export default {
     }
 
     const animateNumber = (element, targetValue) => {
-      if (!element) return
+      if (!element || !element.textContent !== undefined) return
       
       const duration = 2000
       const start = Date.now()
@@ -298,7 +303,9 @@ export default {
         const progress = Math.min(elapsed / duration, 1)
         
         const currentValue = Math.floor(startValue + (targetValue - startValue) * progress)
-        element.textContent = currentValue + (typeof targetValue === 'string' && targetValue.includes('+') ? '+' : '')
+        if (element && element.textContent !== undefined) {
+          element.textContent = currentValue + (typeof targetValue === 'string' && targetValue.includes('+') ? '+' : '')
+        }
         
         if (progress < 1) {
           requestAnimationFrame(animate)
@@ -310,6 +317,16 @@ export default {
 
     onMounted(() => {
       initializeAnimations()
+      
+      // 启动数字动画
+      setTimeout(() => {
+        const statNumbers = document.querySelectorAll('.stat-number')
+        statNumbers.forEach((element, index) => {
+          if (companyStats.value[index]) {
+            animateNumber(element, companyStats.value[index].value)
+          }
+        })
+      }, 1000)
     })
 
     return {
@@ -467,6 +484,13 @@ export default {
 .main-content {
   padding-top: var(--space-16);
   min-height: 50vh;
+}
+
+/* Mobile content padding adjustment */
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: var(--space-20);
+  }
 }
 
 /* Company Section */
@@ -776,46 +800,14 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(10, 22, 40, 0.98);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-8);
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1000;
-  }
-  
-  .nav-menu.mobileMenuOpen {
-    transform: translateX(0);
-  }
-  
-  .nav-link {
-    font-size: var(--font-size-2xl);
-    font-weight: 600;
-    padding: var(--space-4) var(--space-6);
-    border-radius: var(--space-3);
-    transition: all 0.3s ease;
-  }
-  
-  .nav-link:hover {
-    background: rgba(74, 144, 194, 0.2);
-    transform: scale(1.05);
-  }
-  
-  .nav-actions {
+  /* Hide desktop navigation */
+  .navbar {
     display: none;
+  }
+  
+  /* Adjust main content padding for mobile nav */
+  .main-content {
+    padding-top: var(--space-20);
   }
   
   .brand-text h2 {
