@@ -1740,7 +1740,7 @@ export default {
   }
   
   .intelligence-table {
-    min-width: 600px;
+    min-width: 100%;
     font-size: var(--font-size-sm);
   }
   
@@ -1864,7 +1864,7 @@ export default {
   }
   
   .intelligence-table {
-    min-width: 480px;
+    min-width: 100%;
     font-size: var(--font-size-xs);
   }
   
