@@ -3,7 +3,9 @@
     "allow": [
       "Bash(rm:*)",
       "WebFetch(domain:www.emergen.cn)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(grep:*)",
+      "Bash(cp:*)"
     ],
     "deny": []
   }

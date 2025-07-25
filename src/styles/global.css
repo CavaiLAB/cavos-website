@@ -124,6 +124,8 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  /* Fallback for browsers that don't support background-clip: text */
+  color: var(--text-primary);
 }
 
 h1 { 
@@ -251,9 +253,7 @@ a:hover {
 }
 
 /* Utility Classes */
-.fade-in {
-  animation: fadeInUp var(--duration-slow) var(--easing-smooth);
-}
+/* fade-in class is defined in variables.css with Intersection Observer support */
 
 .scale-in {
   animation: fadeInScale var(--duration-slow) var(--easing-smooth);
@@ -361,7 +361,7 @@ a:hover {
 }
 
 .section {
-  padding: var(--space-24) 0;
+  padding: var(--space-16) 0;
   position: relative;
 }
 
@@ -497,6 +497,17 @@ a:hover {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+    padding: 0 var(--space-4);
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .container {
     max-width: 900px;
@@ -519,7 +530,7 @@ a:hover {
   }
   
   .section {
-    padding: var(--space-16) 0;
+    padding: var(--space-10) 0;
   }
   
   .grid-1,
@@ -561,7 +572,7 @@ a:hover {
   }
   
   .section {
-    padding: var(--space-12) 0;
+    padding: var(--space-8) 0;
   }
   
   /* Typography for mobile */
