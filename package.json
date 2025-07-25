@@ -13,7 +13,10 @@
     "docker:run": "docker run -p 3000:3000 cavos-website",
     "docker:dev": "docker-compose --profile dev up -d cavos-dev",
     "docker:prod": "docker-compose up -d",
-    "docker:stop": "docker-compose down"
+    "docker:stop": "docker-compose down",
+    "netlify:deploy": "node scripts/deploy.js",
+    "netlify:build": "npm run build && netlify deploy --prod --dir=dist",
+    "netlify:preview": "npm run build && netlify deploy --dir=dist"
   },
   "keywords": [
     "vue",

@@ -1,0 +1,20 @@
+{
+  "path": "e:\\dawn\\cavos-website\\dist",
+  "desc": "智昌具身智能官网 - 已构建的生产版本，包含CavOS系统、CavScada监控、CavData服务展示，完整H5移动端适配",
+  "id": "5ecb126cb83e4f839b7b9a871dbfd741",
+  "data": {
+    "spaceKey": "5ecb126cb83e4f839b7b9a871dbfd741",
+    "connections": {
+      "webIDE": "https://5ecb126cb83e4f839b7b9a871dbfd741.ap-singapore.cloudstudio.club",
+      "preview": "https://5ecb126cb83e4f839b7b9a871dbfd741--{port}.ap-singapore.cloudstudio.club",
+      "api": "https://5ecb126cb83e4f839b7b9a871dbfd741--api.ap-singapore.cloudstudio.club",
+      "pty": "https://5ecb126cb83e4f839b7b9a871dbfd741--pty.ap-singapore.cloudstudio.club"
+    }
+  },
+  "config": {
+    "api": "https://5ecb126cb83e4f839b7b9a871dbfd741--api.ap-singapore.cloudstudio.club",
+    "pty": "https://5ecb126cb83e4f839b7b9a871dbfd741--pty.ap-singapore.cloudstudio.club",
+    "region": "ap-shanghai",
+    "spaceKey": "5ecb126cb83e4f839b7b9a871dbfd741"
+  }
+}
