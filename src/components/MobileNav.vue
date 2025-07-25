@@ -105,17 +105,19 @@ export default {
 
 <style scoped>
 .mobile-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
   background: rgba(10, 14, 26, 0.95);
   backdrop-filter: blur(20px);
   padding: 12px 20px;
   display: none;
   border-bottom: 1px solid rgba(0, 212, 255, 0.2);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .nav-header {
@@ -193,11 +195,11 @@ export default {
 
 /* 导航菜单 */
 .nav-menu {
-  position: fixed;
-  top: 0;
-  left: -100%;
+  position: fixed !important;
+  top: 0 !important;
+  left: -100% !important;
   width: 320px;
-  height: 100vh;
+  height: 100vh !important;
   background: linear-gradient(180deg, 
     rgba(10, 14, 26, 0.98) 0%,
     rgba(26, 31, 46, 0.98) 50%,
@@ -207,10 +209,11 @@ export default {
   transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 4px 0 30px rgba(0, 0, 0, 0.5);
   border-right: 1px solid rgba(0, 212, 255, 0.2);
+  z-index: 9998 !important;
 }
 
 .nav-menu.active {
-  left: 0;
+  left: 0 !important;
 }
 
 .menu-header {
@@ -353,16 +356,17 @@ export default {
 
 /* 遮罩层 */
 .nav-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   background: rgba(0, 0, 0, 0.6);
   opacity: 0;
   visibility: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(2px);
+  z-index: 9997 !important;
 }
 
 .nav-overlay.active {
@@ -373,7 +377,42 @@ export default {
 /* 移动端显示 */
 @media (max-width: 768px) {
   .mobile-nav {
-    display: block;
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 99999 !important;
+  }
+  
+  /* 确保移动端导航栏不被其他元素影响 */
+  body {
+    padding-top: 0 !important;
+  }
+  
+  /* 重置可能影响导航栏的样式 */
+  * {
+    position: relative;
+  }
+  
+  .mobile-nav,
+  .mobile-nav *,
+  .nav-menu,
+  .nav-menu *,
+  .nav-overlay {
+    position: fixed !important;
+  }
+  
+  .nav-header {
+    position: relative !important;
+  }
+  
+  .nav-brand,
+  .nav-toggle,
+  .menu-header,
+  .nav-list,
+  .nav-item {
+    position: relative !important;
   }
 }
 
