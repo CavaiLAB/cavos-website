@@ -18,28 +18,33 @@
               <span class="brand-subtitle">连接现实与数字世界</span>
             </div>
           </div>
-          <div class="nav-menu">
-            <a href="#" @click="setActiveProduct('home')" class="nav-link" :class="{ active: activeProduct === 'home' }">
+          <div class="nav-menu" :class="{ 'nav-menu-open': mobileMenuOpen }">
+            <a href="#" @click="setActiveProduct('home'); closeMobileMenu()" class="nav-link" :class="{ active: activeProduct === 'home' }">
               <span class="link-text">首页</span>
             </a>
-            <a href="#" @click="setActiveProduct('cavos')" class="nav-link" :class="{ active: activeProduct === 'cavos' }">
+            <a href="#" @click="setActiveProduct('cavos'); closeMobileMenu()" class="nav-link" :class="{ active: activeProduct === 'cavos' }">
               <span class="link-text">CavOS</span>
             </a>
-            <a href="#" @click="setActiveProduct('cavscada')" class="nav-link" :class="{ active: activeProduct === 'cavscada' }">
+            <a href="#" @click="setActiveProduct('cavscada'); closeMobileMenu()" class="nav-link" :class="{ active: activeProduct === 'cavscada' }">
               <span class="link-text">CavScada</span>
             </a>
-            <a href="#" @click="setActiveProduct('cavdata')" class="nav-link" :class="{ active: activeProduct === 'cavdata' }">
+            <a href="#" @click="setActiveProduct('cavdata'); closeMobileMenu()" class="nav-link" :class="{ active: activeProduct === 'cavdata' }">
               <span class="link-text">CavData</span>
             </a>
-            <a href="#about" class="nav-link">
+            <a href="#about" class="nav-link" @click="closeMobileMenu()">
               <span class="link-text">关于智昌</span>
             </a>
-            <a href="#contact" class="nav-link">
+            <a href="#contact" class="nav-link" @click="closeMobileMenu()">
               <span class="link-text">联系我们</span>
             </a>
           </div>
           <div class="nav-actions">
             <a href="tel:400-1040-788" class="btn btn-outline btn-sm">联系咨询</a>
+            <button class="mobile-menu-toggle" @click="toggleMobileMenu()" :class="{ active: mobileMenuOpen }">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
@@ -229,6 +234,7 @@ export default {
   },
   setup() {
     const activeProduct = ref('home')
+    const mobileMenuOpen = ref(false)
     
     const companyStats = ref([
       { value: 11, label: '3年销售额(亿元)' },
@@ -271,6 +277,14 @@ export default {
       initializeAnimations()
     }
 
+    const toggleMobileMenu = () => {
+      mobileMenuOpen.value = !mobileMenuOpen.value
+    }
+
+    const closeMobileMenu = () => {
+      mobileMenuOpen.value = false
+    }
+
     const animateNumber = (element, targetValue) => {
       if (!element) return
       
@@ -300,8 +314,11 @@ export default {
 
     return {
       activeProduct,
+      mobileMenuOpen,
       companyStats,
       setActiveProduct,
+      toggleMobileMenu,
+      closeMobileMenu,
       animateNumber,
       initializeAnimations
     }
@@ -409,6 +426,41 @@ export default {
 .btn-sm {
   padding: var(--space-2) var(--space-4);
   font-size: var(--font-size-sm);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Main Content */
@@ -724,8 +776,42 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
   .nav-menu {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 22, 40, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .nav-menu.mobileMenuOpen {
+    transform: translateX(0);
+  }
+  
+  .nav-link {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--space-3);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    background: rgba(74, 144, 194, 0.2);
+    transform: scale(1.05);
   }
   
   .nav-actions {
