@@ -46,26 +46,7 @@
           </div>
         </div>
         <div class="hero-visual fade-in">
-          <div class="neural-network">
-            <div class="network-core orbital-motion">
-              <div class="core-inner">
-                <span class="core-text">AI</span>
-              </div>
-            </div>
-            <div class="network-nodes">
-              <div class="node node-1 float-gentle"></div>
-              <div class="node node-2 float-gentle"></div>
-              <div class="node node-3 float-gentle"></div>
-              <div class="node node-4 float-gentle"></div>
-              <div class="node node-5 float-gentle"></div>
-              <div class="node node-6 float-gentle"></div>
-            </div>
-            <div class="network-connections">
-              <div class="connection connection-1 matrix-flow"></div>
-              <div class="connection connection-2 matrix-flow"></div>
-              <div class="connection connection-3 matrix-flow"></div>
-            </div>
-          </div>
+          <img src="/src/img/3d.png" alt="3D Visualization" class="hero-image" />
         </div>
       </div>
     </section>
@@ -838,6 +819,20 @@ export default {
   align-items: center;
   height: 600px;
   perspective: 1000px;
+}
+
+.hero-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--space-4);
+  box-shadow: var(--shadow-neural);
+  transition: all var(--duration-normal) var(--easing-smooth);
+}
+
+.hero-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
 }
 
 .neural-network {
@@ -1830,6 +1825,11 @@ export default {
 @media (max-width: 480px) {
   .hero-visual {
     height: 250px;
+  }
+  
+  .hero-image {
+    max-width: 85%;
+    max-height: 85%;
   }
   
   .neural-network {

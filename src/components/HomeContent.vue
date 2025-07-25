@@ -4,18 +4,18 @@
     <section class="hero quantum-particles">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-badge fade-in">
+          <div class="hero-badge">
             <span class="badge-text">具身智能平台</span>
           </div>
-          <h1 class="hero-title fade-in">
+          <h1 class="hero-title">
             <span class="title-main">智昌具身智能平台</span>
             <span class="title-accent">连接现实与数字世界的桥梁</span>
           </h1>
-          <p class="hero-description fade-in">
+          <p class="hero-description">
             基于三元控制技术，构建智能机器人生态系统。
             <br>为每一台机器、每一座工厂、每一条产业链安装"大脑"。
           </p>
-          <div class="hero-features fade-in">
+          <div class="hero-features">
             <div class="feature-pill" @click="$emit('product-change', 'cavos')">
               <span class="pill-icon">🧠</span>
               <span class="pill-text">CavOS</span>
@@ -30,26 +30,9 @@
             </div>
           </div>
         </div>
-        <div class="hero-visual fade-in">
+        <div class="hero-visual">
           <div class="neural-network">
-            <div class="network-core orbital-motion">
-              <div class="core-inner">
-                <span class="core-text">AI</span>
-              </div>
-            </div>
-            <div class="network-nodes">
-              <div class="node node-1 float-gentle"></div>
-              <div class="node node-2 float-gentle"></div>
-              <div class="node node-3 float-gentle"></div>
-              <div class="node node-4 float-gentle"></div>
-              <div class="node node-5 float-gentle"></div>
-              <div class="node node-6 float-gentle"></div>
-            </div>
-            <div class="network-connections">
-              <div class="connection connection-1 matrix-flow"></div>
-              <div class="connection connection-2 matrix-flow"></div>
-              <div class="connection connection-3 matrix-flow"></div>
-            </div>
+            <img src="../img/3d.png" alt="3D Visualization" class="hero-image" />
           </div>
         </div>
       </div>
@@ -59,14 +42,14 @@
     <section class="product-selection section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title fade-in">产品矩阵</h2>
-          <p class="section-subtitle fade-in">构建完整的具身智能生态系统</p>
+          <h2 class="section-title">产品矩阵</h2>
+          <p class="section-subtitle">构建完整的具身智能生态系统</p>
         </div>
         <div class="products-grid">
           <div 
             v-for="product in products" 
             :key="product.id" 
-            class="product-card card-neural fade-in"
+            class="product-card card-neural"
             :class="{ active: activeProduct === product.id }"
             @click="$emit('product-change', product.id)"
           >
@@ -222,14 +205,7 @@ export default {
   padding: var(--space-3) var(--space-4);
   border-radius: var(--space-6);
   backdrop-filter: blur(12px);
-  transition: all var(--duration-normal) var(--easing-smooth);
   cursor: pointer;
-}
-
-.feature-pill:hover {
-  transform: translateY(-2px);
-  border-color: var(--border-neural);
-  box-shadow: var(--shadow-neural);
 }
 
 .pill-icon {
@@ -247,160 +223,23 @@ export default {
   justify-content: center;
   align-items: center;
   height: 600px;
-  perspective: 1000px;
 }
 
 .neural-network {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 500px;
-  transform-style: preserve-3d;
 }
 
-.network-core {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) translateZ(50px);
-  width: 100px;
-  height: 100px;
-  background: var(--gradient-neural);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 
-    var(--shadow-neural),
-    0 0 40px rgba(0, 212, 255, 0.6),
-    0 0 80px rgba(0, 212, 255, 0.3);
-  z-index: 10;
-  transition: all 0.3s ease;
-  cursor: pointer;
+.hero-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.network-core:hover {
-  transform: translate(-50%, -50%) translateZ(60px) scale(1.05);
-  box-shadow: 
-    var(--shadow-neural),
-    0 0 60px rgba(0, 212, 255, 0.8),
-    0 0 120px rgba(0, 212, 255, 0.4);
-}
 
-.core-inner {
-  width: 75px;
-  height: 75px;
-  background: radial-gradient(circle, var(--bg-primary), rgba(0, 0, 0, 0.1));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid rgba(0, 212, 255, 0.3);
-}
-
-.core-text {
-  font-size: var(--font-size-lg);
-  font-weight: 800;
-  background: var(--gradient-neural);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* Fallback for browsers that don't support background-clip: text */
-  color: var(--color-neural);
-}
-
-.network-nodes {
-  position: relative;
-  width: 150%;
-  height: 100%;
-  background-image: url('../img/3d.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3));
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.network-nodes:active {
-  transform: scale(0.98);
-  filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6)) brightness(1.2);
-}
-
-.node {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: radial-gradient(circle, var(--color-neural), rgba(0, 212, 255, 0.6));
-  border-radius: 50%;
-  box-shadow: 
-    0 0 15px var(--color-neural),
-    0 0 30px rgba(0, 212, 255, 0.4),
-    inset 0 0 8px rgba(255, 255, 255, 0.3);
-  transform: translateZ(30px);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.node:hover {
-  transform: translateZ(40px) scale(1.2);
-  box-shadow: 
-    0 0 25px var(--color-neural),
-    0 0 50px rgba(0, 212, 255, 0.6),
-    inset 0 0 12px rgba(255, 255, 255, 0.5);
-}
-
-.node-1 { top: 10%; left: 20%; animation-delay: 0s; }
-.node-2 { top: 20%; right: 15%; animation-delay: 0.5s; }
-.node-3 { bottom: 15%; right: 25%; animation-delay: 1s; }
-.node-4 { bottom: 10%; left: 15%; animation-delay: 1.5s; }
-.node-5 { top: 50%; left: 5%; animation-delay: 2s; }
-.node-6 { top: 50%; right: 5%; animation-delay: 2.5s; }
-
-.network-connections {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.connection {
-  position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-neural), transparent);
-  opacity: 0.8;
-  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
-  transform: translateZ(25px);
-}
-
-.connection-1 {
-  top: 30%;
-  left: 20%;
-  width: 60%;
-  transform: rotate(15deg);
-  animation-delay: 0s;
-}
-
-.connection-2 {
-  top: 60%;
-  left: 15%;
-  width: 70%;
-  transform: rotate(-20deg);
-  animation-delay: 1s;
-}
-
-.connection-3 {
-  top: 45%;
-  left: 10%;
-  width: 80%;
-  transform: rotate(5deg);
-  animation-delay: 2s;
-}
 
 /* Product Selection */
 .product-selection {
@@ -417,30 +256,6 @@ export default {
   padding: var(--space-8);
   text-align: center;
   cursor: pointer;
-  transition: all var(--duration-normal) var(--easing-smooth);
-  position: relative;
-  overflow: hidden;
-}
-
-.product-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.product-card:hover::before {
-  left: 100%;
-}
-
-.product-card:hover {
-  transform: translateY(-var(--space-2));
-  border-color: var(--border-neural);
-  box-shadow: var(--shadow-neural);
 }
 
 .product-card.active {
