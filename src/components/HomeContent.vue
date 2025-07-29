@@ -231,12 +231,15 @@ export default {
   align-items: center;
   width: 100%;
   height: 500px;
+  overflow: visible;
 }
 
 .hero-image {
   max-width: 100%;
   max-height: 100%;
+  min-width: 320px;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 
@@ -335,8 +338,9 @@ export default {
   }
   
   .neural-network {
-    width: 280px;
+    width: 90%;
     height: 280px;
+    overflow: visible;
   }
   
   .network-nodes {
@@ -360,8 +364,15 @@ export default {
   }
   
   .neural-network {
-    width: 220px;
+    width: 90%;
     height: 220px;
+    overflow: visible;
+  }
+  
+  .hero-image {
+    min-width: 280px;
+    width: auto;
+    max-height: none;
   }
   
   .network-nodes {

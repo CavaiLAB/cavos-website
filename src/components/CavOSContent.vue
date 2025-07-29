@@ -1,5 +1,5 @@
 <template>
-  <div class="cavos-content">
+  <div class="cavos-content" style="overflow-x: hidden; width: 100%; position: relative;">
     <!-- Hero Section -->
     <section class="hero quantum-particles">
       <div class="container">
@@ -717,6 +717,11 @@ export default {
   grid-template-columns: 1fr 1fr;
   gap: var(--space-16);
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -819,6 +824,8 @@ export default {
   align-items: center;
   height: 600px;
   perspective: 1000px;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hero-image {
@@ -828,6 +835,7 @@ export default {
   border-radius: var(--space-4);
   box-shadow: var(--shadow-neural);
   transition: all var(--duration-normal) var(--easing-smooth);
+  width: auto;
 }
 
 .hero-image:hover {
@@ -1070,6 +1078,7 @@ export default {
 .diagram-container {
   position: relative;
   max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -1077,6 +1086,7 @@ export default {
   padding: var(--space-8);
   backdrop-filter: blur(16px);
   box-shadow: var(--shadow-neural);
+  box-sizing: border-box;
 }
 
 .arch-layer-visual {
@@ -1685,10 +1695,17 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    width: 100%;
+  }
+  
   .hero .container {
     grid-template-columns: 1fr;
     text-align: center;
     gap: var(--space-10);
+    width: 100%;
   }
   
   .hero-visual {
@@ -1826,12 +1843,20 @@ export default {
 
 @media (max-width: 480px) {
   .hero-visual {
-    height: 250px;
+    height: auto;
+    width: 100%;
+    overflow: visible;
+    padding: 20px 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
   
   .hero-image {
-    max-width: 85%;
-    max-height: 85%;
+    max-width: 100%;
+    max-height: none;
+    width: auto;
+    transform: scale(0.9);
   }
   
   .neural-network {
@@ -1899,7 +1924,8 @@ export default {
   
   .diagram-container {
     padding: var(--space-3);
-    margin: 0 var(--space-2);
+    margin: 0 auto;
+    width: calc(100% - var(--space-4));
   }
   
   .arch-layer-visual {
