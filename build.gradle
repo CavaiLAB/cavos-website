@@ -1,0 +1,20 @@
+// 这是一个最小化的Gradle配置文件，用于解决IDE兼容性问题
+// 实际上，这个项目是一个Vue.js前端项目，不需要Gradle构建
+
+plugins {
+    id 'base'
+}
+
+// 指定Java兼容性版本
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(19) // 设置为最大兼容的Java版本
+    }
+}
+
+// 添加一个简单的任务，用于测试Gradle配置
+task testGradleConfig {
+    doLast {
+        println "Gradle配置测试成功！"
+    }
+}
