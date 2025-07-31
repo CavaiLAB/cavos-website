@@ -28,6 +28,10 @@
               <span class="pill-icon">💾</span>
               <span class="pill-text">CavData</span>
             </div>
+            <div class="feature-pill" @click="$emit('product-change', 'cavvla')">
+              <span class="pill-icon">🤖</span>
+              <span class="pill-text">CavVLA</span>
+            </div>
           </div>
         </div>
         <div class="hero-visual">
@@ -102,6 +106,13 @@ export default {
         icon: '💾',
         description: '智能数据管理平台，提供数据存储、处理和分析能力',
         features: ['数据存储', '智能处理', '可视化分析']
+      },
+      {
+        id: 'cavvla',
+        name: 'CavVLA',
+        icon: '🤖',
+        description: '新一代具身智能视觉语言动作模型，让机器人真正理解任务',
+        features: ['视觉理解', '语言处理', '动作执行']
       }
     ])
 
@@ -242,8 +253,6 @@ export default {
   transition: transform 0.3s ease;
 }
 
-
-
 /* Product Selection */
 .product-selection {
   background: var(--bg-secondary);
@@ -251,8 +260,8 @@ export default {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-8);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
 }
 
 .product-card {
@@ -314,13 +323,20 @@ export default {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+}
+
 @media (max-width: 1024px) {
   .hero .container {
     gap: var(--space-12);
   }
   
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-6);
   }
 }
@@ -355,6 +371,11 @@ export default {
   
   .title-accent {
     font-size: var(--font-size-xl);
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
   }
 }
 

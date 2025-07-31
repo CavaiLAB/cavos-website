@@ -193,13 +193,13 @@ export default {
 
 /* 英雄区域 */
 .cavdata-hero {
-  min-height: 80vh;
+  min-height: 50vh;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: var(--space-20) 0 var(--space-16) 0;
+  padding: var(--space-12) 0 var(--space-8) 0;
 }
 
 .cavdata-hero-bg {

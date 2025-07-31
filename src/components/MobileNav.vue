@@ -36,6 +36,10 @@
           <i class="icon-data"></i>
           <span>CavData服务</span>
         </li>
+        <li class="nav-item" @click="navigateTo('cavvla')">
+          <i class="icon-vla"></i>
+          <span>CavVLA智能</span>
+        </li>
         <li class="nav-item" @click="navigateToSection('about')">
           <i class="icon-about"></i>
           <span>关于智昌</span>
@@ -356,6 +360,10 @@ export default {
 }
 .icon-data::before { 
   content: '💾'; 
+  filter: grayscale(0.3);
+}
+.icon-vla::before { 
+  content: '🤖'; 
   filter: grayscale(0.3);
 }
 .icon-about::before { 

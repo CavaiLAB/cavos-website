@@ -34,6 +34,9 @@
             <a href="#" @click="setActiveProduct('cavdata'); closeMobileMenu()" class="nav-link" :class="{ active: activeProduct === 'cavdata' }">
               <span class="link-text">CavData</span>
             </a>
+            <a href="#" @click="setActiveProduct('cavvla'); closeMobileMenu()" class="nav-link" :class="{ active: activeProduct === 'cavvla' }">
+              <span class="link-text">CavVLA</span>
+            </a>
             <a href="#about" class="nav-link" @click="closeMobileMenu()">
               <span class="link-text">关于智昌</span>
             </a>
@@ -70,6 +73,9 @@
       
       <!-- CavData Content -->
       <CavDataContent v-if="activeProduct === 'cavdata'" />
+      
+      <!-- CavVLA Content -->
+      <CavVLAContent v-if="activeProduct === 'cavvla'" />
     </main>
 
     <!-- Company Section -->
@@ -225,6 +231,7 @@ import HomeContent from './components/HomeContent.vue'
 import CavOSContent from './components/CavOSContent.vue'
 import CavScadaContent from './components/CavScadaContent.vue'
 import CavDataContent from './components/CavDataContent.vue'
+import CavVLAContent from './components/CavVLAContent.vue'
 import MobileNav from './components/MobileNav.vue'
 import './styles/variables.css'
 
@@ -235,6 +242,7 @@ export default {
     CavOSContent,
     CavScadaContent,
     CavDataContent,
+    CavVLAContent,
     MobileNav
   },
   setup() {
