@@ -14,10 +14,6 @@
           <p class="hero-description">
             集成多协议解析、数据采集、智能问答、可视化组态于一体的新一代工业控制平台。助力企业实现数字化转型，提升生产效率和管理水平，构建智能化的工业生态系统。
           </p>
-          <div class="hero-actions">
-            <button class="btn btn-primary">立即体验</button>
-            <button class="btn btn-outline">了解更多</button>
-          </div>
         </div>
         <div class="hero-visual">
           <div class="scada-animation">
