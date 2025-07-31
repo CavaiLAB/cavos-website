@@ -130,12 +130,12 @@ export default {
 
 /* Hero Section */
 .hero {
-  min-height: 80vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   background: var(--gradient-cosmic);
   position: relative;
-  padding: var(--space-20) 0 var(--space-16) 0;
+  padding: var(--space-12) 0 var(--space-10) 0;
 }
 
 .hero .container {
@@ -233,7 +233,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px;
+  height: 450px;
 }
 
 .neural-network {
@@ -241,7 +241,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 500px;
+  height: 400px;
   overflow: visible;
 }
 
@@ -345,17 +345,17 @@ export default {
   .hero .container {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: var(--space-10);
+    gap: var(--space-8);
   }
   
   .hero-visual {
     order: -1;
-    height: 300px;
+    height: 250px;
   }
   
   .neural-network {
     width: 90%;
-    height: 280px;
+    height: 230px;
     overflow: visible;
   }
   

@@ -702,7 +702,7 @@ export default {
 <style scoped>
 /* Hero Section */
 .hero {
-  min-height: 80vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   background: var(--gradient-cosmic);

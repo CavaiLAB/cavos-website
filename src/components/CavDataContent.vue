@@ -1,17 +1,31 @@
 <template>
   <div class="cavdata-page">
-    <!-- 英雄区域 -->
-    <section class="cavdata-hero">
-      <div class="cavdata-hero-bg">
-        <div class="cavdata-tech-grid"></div>
-      </div>
-      <div class="cavdata-hero-content">
-        <h1 class="cavdata-hero-title">CavData</h1>
-        <p class="cavdata-hero-subtitle">智能数据价值引擎，让机器读懂业务语言</p>
-        <p class="cavdata-hero-description">
-          基于MLE Agent的深度学习能力，实现从软硬件系统采集的多源数据的全流程自动化分析，
-          为您的业务提供实时洞察和智能决策支持
-        </p>
+    <!-- Hero Section -->
+    <section class="hero quantum-particles">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-text">智能数据价值引擎</span>
+          </div>
+          <h1 class="hero-title">
+            <span class="title-main">CavData</span>
+            <span class="title-accent">让机器读懂业务语言</span>
+          </h1>
+          <p class="hero-description">
+            基于MLE Agent的深度学习能力，实现从软硬件系统采集的多源数据的全流程自动化分析，为您的业务提供实时洞察和智能决策支持。我们的智能分析模块将您的硬件传感器、业务系统数据转化为实时商业洞察，驱动增长飞轮。
+          </p>
+        </div>
+        <div class="hero-visual">
+          <div class="data-animation">
+            <div class="data-core">📊</div>
+            <div class="data-flow">
+              <div class="flow-node">🔗 智能数据融合</div>
+              <div class="flow-node">🔄 全流程自动化</div>
+              <div class="flow-node">🧠 智能决策树搜索</div>
+              <div class="flow-node">⚡ 实时洞察</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -185,112 +199,145 @@ export default {
 <style scoped>
 /* CavData页面专用样式 */
 .cavdata-page {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  min-height: 100vh;
-  color: #ffffff;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
 }
 
-/* 英雄区域 */
-.cavdata-hero {
-  min-height: 50vh;
-  position: relative;
+/* Hero Section */
+.hero {
+  min-height: 65vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: var(--space-12) 0 var(--space-8) 0;
-}
-
-.cavdata-hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-}
-
-.cavdata-tech-grid {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    linear-gradient(rgba(102, 126, 234, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(118, 75, 162, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.3;
-  animation: gridMove 20s linear infinite;
-}
-
-.cavdata-hero-content {
-  text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  z-index: 20;
+  background: var(--gradient-cosmic);
   position: relative;
-  padding: 0 20px;
+  padding: var(--space-16) 0 var(--space-12) 0;
 }
 
-.cavdata-hero-title {
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ffffff 100%);
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.hero-content {
+  max-width: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-bottom: var(--space-6);
+}
+
+.badge-text {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid var(--border-neural);
+  color: var(--color-neural);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--space-6);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin-bottom: var(--space-6);
+}
+
+.title-main {
+  display: block;
+  font-size: var(--font-size-6xl);
+  font-weight: 900;
+  line-height: 0.9;
+  margin-bottom: var(--space-2);
+  background: var(--gradient-neural);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
-  animation: titleGlow 3s ease-in-out infinite alternate;
+  color: var(--text-primary);
 }
 
-.cavdata-hero-subtitle {
-  font-size: 1.5rem;
-  color: #8a7cf8;
-  margin-bottom: 30px;
-  font-weight: 300;
+.title-accent {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
 }
 
-.cavdata-hero-description {
-  font-size: 1.2rem;
-  color: #c4b5fd;
-  line-height: 1.8;
-  margin-bottom: 40px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.hero-description {
+  font-size: var(--font-size-xl);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+  max-width: 500px;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+}
+
+.data-animation {
+  text-align: center;
+}
+
+.data-core {
+  font-size: 6rem;
+  margin-bottom: var(--space-8);
+  animation: floatGentle 3s ease-in-out infinite;
+}
+
+.data-flow {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flow-node {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-neural);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--space-6);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-neural);
+  backdrop-filter: blur(12px);
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
 /* 核心功能区域 */
 .cavdata-section {
-  padding: 100px 0;
+  padding: var(--space-20) 0;
   position: relative;
 }
 
 .cavdata-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--space-5);
 }
 
 .cavdata-section-title {
-  font-size: 2.5rem;
+  font-size: var(--font-size-4xl);
   font-weight: 700;
   text-align: center;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: var(--space-5);
+  color: var(--text-primary);
 }
 
 .cavdata-section-subtitle {
-  font-size: 1.2rem;
-  color: #a0a0a0;
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: var(--space-12);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -299,24 +346,25 @@ export default {
 .cavdata-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  margin-bottom: 80px;
+  gap: var(--space-8);
+  margin-bottom: var(--space-20);
 }
 
 .cavdata-feature-card {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  padding: 40px 30px;
-  border-radius: 15px;
-  border: 1px solid #333;
-  transition: all 0.3s ease;
+  background: var(--bg-surface);
+  padding: var(--space-10) var(--space-8);
+  border-radius: var(--space-4);
+  border: 1px solid var(--border-color);
+  transition: all var(--duration-normal) var(--easing-smooth);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(16px);
 }
 
 .cavdata-feature-card:hover {
-  transform: translateY(-5px);
-  border-color: #667eea;
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  transform: translateY(-0.5rem);
+  border-color: var(--border-neural);
+  box-shadow: var(--shadow-neural);
 }
 
 .cavdata-feature-card::before {
@@ -326,7 +374,7 @@ export default {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
   transition: left 0.5s ease;
 }
 
@@ -335,107 +383,123 @@ export default {
 }
 
 .cavdata-feature-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-5);
   display: block;
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-neural);
 }
 
 .cavdata-feature-title {
-  font-size: 1.5rem;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 15px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
 }
 
 .cavdata-feature-description {
-  color: #a0a0a0;
+  color: var(--text-secondary);
   line-height: 1.6;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
 }
 
 /* 技术优势区域 */
 .cavdata-advantages {
-  background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
-  padding: 100px 0;
+  background: var(--bg-section-alt);
+  padding: var(--space-20) 0;
 }
 
 .cavdata-advantages-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
+  gap: var(--space-10);
 }
 
 .cavdata-advantage-item {
   text-align: center;
-  padding: 40px 20px;
+  padding: var(--space-10) var(--space-5);
 }
 
 .cavdata-advantage-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--space-5);
   display: block;
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-neural);
 }
 
 .cavdata-advantage-title {
-  font-size: 1.3rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
-  color: #667eea;
-  margin-bottom: 15px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
 }
 
 .cavdata-advantage-description {
-  color: #a0a0a0;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 /* 行业应用区域 */
 .cavdata-applications {
-  padding: 100px 0;
+  padding: var(--space-20) 0;
 }
 
 .cavdata-applications-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: var(--space-8);
 }
 
 .cavdata-application-card {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  padding: 30px;
-  border-radius: 15px;
-  border: 1px solid #333;
+  background: var(--bg-surface);
+  padding: var(--space-8);
+  border-radius: var(--space-4);
+  border: 1px solid var(--border-color);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) var(--easing-smooth);
+  backdrop-filter: blur(16px);
 }
 
 .cavdata-application-card:hover {
-  transform: translateY(-3px);
-  border-color: #667eea;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+  transform: translateY(-0.5rem);
+  border-color: var(--border-neural);
+  box-shadow: var(--shadow-neural);
 }
 
 .cavdata-application-icon {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-4);
   display: block;
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-neural);
 }
 
 .cavdata-application-title {
-  font-size: 1.2rem;
+  font-size: var(--font-size-xl);
   font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 10px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
 }
 
 .cavdata-application-description {
-  color: #a0a0a0;
-  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
 }
 
 /* 价值证明区域 */
 .cavdata-value {
-  background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
-  padding: 100px 0;
+  background: var(--bg-section-alt);
+  padding: var(--space-20) 0;
 }
 
 .cavdata-value-content {
@@ -445,24 +509,24 @@ export default {
 }
 
 .cavdata-value-title {
-  font-size: 2rem;
+  font-size: var(--font-size-3xl);
   font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 30px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-8);
 }
 
 .cavdata-value-description {
-  font-size: 1.1rem;
-  color: #a0a0a0;
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
   line-height: 1.8;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-10);
 }
 
 .cavdata-value-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
 }
 
 .cavdata-stat-item {
@@ -470,35 +534,40 @@ export default {
 }
 
 .cavdata-stat-value {
-  font-size: 2.5rem;
+  font-size: var(--font-size-4xl);
   font-weight: 700;
-  color: #667eea;
-  margin-bottom: 10px;
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--color-neural);
+  margin-bottom: var(--space-3);
 }
 
 .cavdata-stat-label {
-  color: #a0a0a0;
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
 }
 
 /* 行动号召区域 */
 .cavdata-cta {
-  padding: 100px 0;
+  background: var(--bg-section-accent);
+  padding: var(--space-20) 0;
   text-align: center;
 }
 
 .cavdata-cta-title {
-  font-size: 2.5rem;
+  font-size: var(--font-size-4xl);
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 30px;
+  color: var(--text-primary);
+  margin-bottom: var(--space-8);
 }
 
 .cavdata-cta-description {
-  font-size: 1.2rem;
-  color: #a0a0a0;
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 50px;
+  margin-bottom: var(--space-12);
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -506,43 +575,43 @@ export default {
 
 .cavdata-cta-buttons {
   display: flex;
-  gap: 20px;
+  gap: var(--space-5);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .cavdata-btn {
-  padding: 15px 40px;
-  font-size: 1.1rem;
+  padding: var(--space-4) var(--space-10);
+  font-size: var(--font-size-lg);
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--space-2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--duration-normal) var(--easing-smooth);
   text-decoration: none;
   display: inline-block;
 }
 
 .cavdata-btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  background: var(--gradient-neural);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-neural);
 }
 
 .cavdata-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+  box-shadow: var(--shadow-neural-hover);
 }
 
 .cavdata-btn-secondary {
   background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: var(--color-neural);
+  border: 2px solid var(--border-neural);
 }
 
 .cavdata-btn-secondary:hover {
-  background: rgba(102, 126, 234, 0.1);
-  color: #ffffff;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--text-primary);
 }
 
 /* 动画效果 */
@@ -557,17 +626,39 @@ export default {
 }
 
 /* 响应式设计 */
+@media (max-width: 1024px) {
+  .hero .container {
+    gap: var(--space-12);
+  }
+}
+
 @media (max-width: 768px) {
-  .cavdata-hero-title {
-    font-size: 2.5rem;
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-10);
   }
-
-  .cavdata-hero-subtitle {
-    font-size: 1.2rem;
+  
+  .hero-visual {
+    order: -1;
+    height: 300px;
   }
-
-  .cavdata-hero-description {
-    font-size: 1rem;
+  
+  .data-core {
+    font-size: 4rem;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-5xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-xl);
+  }
+  
+  .data-flow {
+    flex-direction: column;
+    align-items: center;
   }
 
   .cavdata-section-title {
@@ -593,6 +684,21 @@ export default {
   .cavdata-cta-buttons {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-visual {
+    height: 250px;
+  }
+  
+  .data-core {
+    font-size: 3rem;
+  }
+  
+  .flow-node {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-xs);
   }
 }
 </style>

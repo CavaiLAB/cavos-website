@@ -1,20 +1,20 @@
 {
-  "path": "e:\\dawn\\cavos-website\\dist",
-  "desc": "智昌具身智能官网 - 已构建的生产版本，包含CavOS系统、CavScada监控、CavData服务展示，完整H5移动端适配",
-  "id": "5ecb126cb83e4f839b7b9a871dbfd741",
+  "path": "e:\\Users\\dawn\\Desktop\\components\\cavos-website\\dist",
+  "desc": "这是智昌科技官网前端项目，展示具身智能技术产品，包括CavOS操作系统、CavData数据平台、CavScada工业控制系统和新增的CavVLA视觉语言动作模型等核心产品。",
+  "id": "43361cce5c6c4ede8e0d1d060b3f66da",
   "data": {
-    "spaceKey": "5ecb126cb83e4f839b7b9a871dbfd741",
+    "spaceKey": "43361cce5c6c4ede8e0d1d060b3f66da",
     "connections": {
-      "webIDE": "https://5ecb126cb83e4f839b7b9a871dbfd741.ap-singapore.cloudstudio.club",
-      "preview": "https://5ecb126cb83e4f839b7b9a871dbfd741--{port}.ap-singapore.cloudstudio.club",
-      "api": "https://5ecb126cb83e4f839b7b9a871dbfd741--api.ap-singapore.cloudstudio.club",
-      "pty": "https://5ecb126cb83e4f839b7b9a871dbfd741--pty.ap-singapore.cloudstudio.club"
+      "webIDE": "https://43361cce5c6c4ede8e0d1d060b3f66da.ap-singapore.cloudstudio.club",
+      "preview": "https://43361cce5c6c4ede8e0d1d060b3f66da--{port}.ap-singapore.cloudstudio.club",
+      "api": "https://43361cce5c6c4ede8e0d1d060b3f66da--api.ap-singapore.cloudstudio.club",
+      "pty": "https://43361cce5c6c4ede8e0d1d060b3f66da--pty.ap-singapore.cloudstudio.club"
     }
   },
   "config": {
-    "api": "https://5ecb126cb83e4f839b7b9a871dbfd741--api.ap-singapore.cloudstudio.club",
-    "pty": "https://5ecb126cb83e4f839b7b9a871dbfd741--pty.ap-singapore.cloudstudio.club",
+    "api": "https://43361cce5c6c4ede8e0d1d060b3f66da--api.ap-singapore.cloudstudio.club",
+    "pty": "https://43361cce5c6c4ede8e0d1d060b3f66da--pty.ap-singapore.cloudstudio.club",
     "region": "ap-shanghai",
-    "spaceKey": "5ecb126cb83e4f839b7b9a871dbfd741"
+    "spaceKey": "43361cce5c6c4ede8e0d1d060b3f66da"
   }
 }

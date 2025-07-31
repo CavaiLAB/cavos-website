@@ -314,7 +314,7 @@ export default {
 
 /* Hero Section */
 .hero {
-  min-height: 60vh;
+  min-height: 65vh;
   display: flex;
   align-items: center;
   background: var(--gradient-cosmic);
