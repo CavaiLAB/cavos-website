@@ -34,7 +34,7 @@
       <div class="container">
         <h2 class="section-title animate-fade-in">核心功能</h2>
         <p class="section-subtitle animate-fade-in-delay">全面的工业控制解决方案，为您的业务提供强大支持</p>
-        <div class="grid grid-3 grid-animate">
+        <div class="grid grid-2-rows grid-animate">
           <div class="card" v-for="feature in features" :key="feature.title">
             <div class="feature-image">
               <img :src="feature.icon" :alt="feature.title" />
@@ -572,6 +572,16 @@ export default {
   text-align: center;
   font-size: var(--font-size-sm);
 }
+/* 网格布局样式 */
+.grid-2-rows {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--space-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* 动画效果 */
 .animate-fade-in {
   opacity: 0;
@@ -1403,6 +1413,12 @@ export default {
     grid-template-columns: 1fr;
   }
   
+  .grid-2-rows {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+  }
+  
   .card {
     padding: 30px 20px;
     min-height: 350px;
@@ -1496,6 +1512,12 @@ export default {
   
   .feature-description {
     font-size: 0.85rem;
+  }
+  
+  .grid-2-rows {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, 1fr);
+    gap: 15px;
   }
 }
 </style>
