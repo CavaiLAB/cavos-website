@@ -1,266 +1,409 @@
 <template>
-  <div class="architecture-container">
-    <h2 class="architecture-title">CavVLA 系统架构</h2>
-    <div class="architecture-svg-wrapper">
-      <svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" class="architecture-svg">
-        <!-- 背景装饰 -->
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.8" />
-          </linearGradient>
-          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#f093fb;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#f5576c;stop-opacity:0.8" />
-          </linearGradient>
-          <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#4facfe;stop-opacity:0.8" />
-            <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:0.8" />
-          </linearGradient>
-          <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
-          </filter>
-          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
-          </marker>
-        </defs>
-        
-        <!-- 输入层 -->
-        <g class="module">
-          <rect x="50" y="50" width="180" height="80" rx="15" fill="url(#grad3)" filter="url(#shadow)"/>
-          <text x="140" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="bold">多视角相机</text>
-          <text x="140" y="105" text-anchor="middle" fill="white" font-size="14">头部/腕部/全局</text>
-        </g>
-        
-        <g class="module">
-          <rect x="250" y="50" width="180" height="80" rx="15" fill="url(#grad3)" filter="url(#shadow)"/>
-          <text x="340" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="bold">机器人状态</text>
-          <text x="340" y="105" text-anchor="middle" fill="white" font-size="14">关节/位置/力反馈</text>
-        </g>
-        
-        <g class="module">
-          <rect x="450" y="50" width="180" height="80" rx="15" fill="url(#grad3)" filter="url(#shadow)"/>
-          <text x="540" y="85" text-anchor="middle" fill="white" font-size="16" font-weight="bold">环境感知</text>
-          <text x="540" y="105" text-anchor="middle" fill="white" font-size="14">点云/深度/触觉</text>
-        </g>
-        
-        <!-- 处理层 -->
-        <g class="module">
-          <rect x="50" y="200" width="160" height="100" rx="15" fill="url(#grad1)" filter="url(#shadow)"/>
-          <text x="130" y="235" text-anchor="middle" fill="white" font-size="16" font-weight="bold">YOLO识别</text>
-          <text x="130" y="255" text-anchor="middle" fill="white" font-size="14">物体分割</text>
-          <text x="130" y="275" text-anchor="middle" fill="white" font-size="14">边界检测</text>
-        </g>
-        
-        <g class="module pulse">
-          <rect x="250" y="200" width="200" height="100" rx="15" fill="url(#grad2)" filter="url(#shadow)"/>
-          <text x="350" y="235" text-anchor="middle" fill="white" font-size="18" font-weight="bold">CavVLA核心</text>
-          <text x="350" y="255" text-anchor="middle" fill="white" font-size="14">视觉语言动作模型</text>
-          <text x="350" y="275" text-anchor="middle" fill="white" font-size="14">任务理解与执行</text>
-        </g>
-        
-        <g class="module">
-          <rect x="490" y="200" width="160" height="100" rx="15" fill="url(#grad1)" filter="url(#shadow)"/>
-          <text x="570" y="235" text-anchor="middle" fill="white" font-size="16" font-weight="bold">VLM规划</text>
-          <text x="570" y="255" text-anchor="middle" fill="white" font-size="14">轨迹生成</text>
-          <text x="570" y="275" text-anchor="middle" fill="white" font-size="14">路径优化</text>
-        </g>
-        
-        <!-- 决策层 -->
-        <g class="module">
-          <path d="M 350 350 L 450 400 L 350 450 L 250 400 Z" fill="#ff6b6b" stroke="none" filter="url(#shadow)"/>
-          <text x="350" y="395" text-anchor="middle" fill="white" font-size="16" font-weight="bold">智能路由</text>
-          <text x="350" y="415" text-anchor="middle" fill="white" font-size="14">状态机/LLM</text>
-        </g>
-        
-        <!-- 执行层 -->
-        <g class="module">
-          <rect x="100" y="500" width="150" height="80" rx="15" fill="#20c997" filter="url(#shadow)"/>
-          <text x="175" y="530" text-anchor="middle" fill="white" font-size="16" font-weight="bold">脚本执行</text>
-          <text x="175" y="550" text-anchor="middle" fill="white" font-size="14">精准控制</text>
-        </g>
-        
-        <g class="module">
-          <rect x="300" y="500" width="150" height="80" rx="15" fill="#20c997" filter="url(#shadow)"/>
-          <text x="375" y="530" text-anchor="middle" fill="white" font-size="16" font-weight="bold">示教遥控</text>
-          <text x="375" y="550" text-anchor="middle" fill="white" font-size="14">人机协作</text>
-        </g>
-        
-        <g class="module">
-          <rect x="500" y="500" width="150" height="80" rx="15" fill="#20c997" filter="url(#shadow)"/>
-          <text x="575" y="530" text-anchor="middle" fill="white" font-size="16" font-weight="bold">动作执行</text>
-          <text x="575" y="550" text-anchor="middle" fill="white" font-size="14">实时反馈</text>
-        </g>
-        
-        <!-- 数据管理 -->
-        <g class="module">
-          <circle cx="820" cy="350" r="60" fill="#ff922b" filter="url(#shadow)"/>
-          <text x="820" y="345" text-anchor="middle" fill="white" font-size="16" font-weight="bold">数据集</text>
-          <text x="820" y="365" text-anchor="middle" fill="white" font-size="14">LeRobot</text>
-        </g>
-        
-        <g class="module">
-          <rect x="740" y="450" width="160" height="80" rx="15" fill="#845ec2" filter="url(#shadow)"/>
-          <text x="820" y="480" text-anchor="middle" fill="white" font-size="16" font-weight="bold">数据管理</text>
-          <text x="820" y="500" text-anchor="middle" fill="white" font-size="14">清洗/优化/回流</text>
-        </g>
-        
-        <!-- 连接线 -->
-        <path d="M 140 130 L 140 200" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 340 130 L 340 200" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 540 130 L 540 200" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        
-        <path d="M 210 250 L 250 250" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 450 250 L 490 250" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        
-        <path d="M 130 300 L 280 370" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 350 300 L 350 350" stroke="#666" stroke-width="3" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 570 300 L 420 370" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        
-        <path d="M 300 430 L 175 500" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 350 450 L 375 500" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 400 430 L 525 500" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        
-        <path d="M 650 540 L 760 400" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 820 410 L 820 450" stroke="#666" stroke-width="2" fill="none" class="arrow" marker-end="url(#arrowhead)"/>
-        <path d="M 740 490 L 450 300" stroke="#666" stroke-width="2" fill="none" stroke-dasharray="5,5" class="arrow" marker-end="url(#arrowhead)"/>
-      </svg>
+  <div class="particles" id="particles"></div>
+  
+  <div class="container">
+    <h1>CavVLA 系统架构</h1>
+    
+    <div class="architecture">
+      <!-- 输入层 -->
+      <div class="layer-section">
+        <div class="layer-title">数据输入层</div>
+        <div class="layer input-layer">
+          <div class="module">
+            <h3>多视角相机</h3>
+            <p>头部/腕部视觉</p>
+          </div>
+          <div class="module">
+            <h3>机器人状态</h3>
+            <p>关节/位置信息</p>
+          </div>
+          <div class="module">
+            <h3>环境感知</h3>
+            <p>点云/深度数据</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="connector"></div>
+      
+      <!-- 处理层 -->
+      <div class="layer-section">
+        <div class="layer-title">智能处理层</div>
+        <div class="layer process-layer">
+          <div class="module">
+            <h3>YOLO识别</h3>
+            <p>物体分割定位</p>
+          </div>
+          <div class="module core-module">
+            <h3>CavVLA核心</h3>
+            <p>视觉语言动作融合</p>
+          </div>
+          <div class="module">
+            <h3>VLM规划</h3>
+            <p>轨迹生成优化</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="connector"></div>
+      
+      <!-- 决策层 -->
+      <div class="layer-section">
+        <div class="layer-title">执行策略选择</div>
+        <div class="layer decision-layer">
+          <div class="module">
+            <h3>智能决策系统</h3>
+            <p>状态机/LLM双模式 · 任务类型自动识别</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="connector"></div>
+      
+      <!-- 执行层 -->
+      <div class="layer-section">
+        <div class="layer-title">动作执行层</div>
+        <div class="layer execute-layer">
+          <div class="module">
+            <h3>脚本执行</h3>
+            <p>快速精准控制</p>
+          </div>
+          <div class="module">
+            <h3>示教遥控</h3>
+            <p>人机协作模式</p>
+          </div>
+          <div class="module">
+            <h3>自主执行</h3>
+            <p>智能自适应</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="connector"></div>
+      
+      <!-- 数据层 -->
+      <div class="layer-section">
+        <div class="layer-title">数据管理层</div>
+        <div class="layer data-layer">
+          <div class="module">
+            <h3>LeRobot数据集</h3>
+            <p>数据存储 · 优化回流 · 持续改进</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CavVLAArchitecture'
+  name: 'CavVLAArchitecture',
+  mounted() {
+    // 创建背景粒子
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+      particlesContainer.appendChild(particle);
+    }
+    
+    // 添加点击交互
+    document.querySelectorAll('.module').forEach(module => {
+      module.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 200);
+      });
+    });
+    
+    // 添加滚动动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '0';
+          entry.target.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            entry.target.style.transition = 'all 0.6s ease';
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, 100);
+        }
+      });
+    });
+    
+    document.querySelectorAll('.layer-section').forEach(section => {
+      observer.observe(section);
+    });
+  }
 }
 </script>
 
 <style scoped>
-.architecture-container {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background: rgba(26, 26, 46, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  padding: 40px;
-  margin: 40px 0;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 0 100px rgba(255,255,255,0.02);
+  padding: 50px;
+  max-width: 1200px;
+  width: 100%;
+  backdrop-filter: blur(20px);
+  margin: 40px auto;
   position: relative;
+  color: #ffffff;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 50px;
+  font-size: 2.8em;
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-shadow: 0 0 30px rgba(100, 200, 255, 0.5);
+}
+
+.architecture {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.layer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.module {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 25px 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.05);
+  text-align: center;
+  min-width: 200px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
   overflow: hidden;
 }
 
-.architecture-container::before {
+.module::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
 }
 
-.architecture-title {
-  text-align: center;
-  color: #ffffff;
-  margin-bottom: 40px;
-  font-size: 2.5em;
+.module:hover::before {
+  transform: translateX(100%);
+}
+
+.module:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 30px rgba(100, 200, 255, 0.3);
+  border-color: rgba(100, 200, 255, 0.5);
+}
+
+.module h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
   font-weight: 600;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
   position: relative;
   z-index: 1;
 }
 
-.architecture-svg-wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+.module p {
+  font-size: 0.95em;
+  opacity: 0.8;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
 }
 
-.architecture-svg {
-  width: 100%;
-  height: auto;
-  max-width: 1000px;
+/* 不同层级的颜色 */
+.input-layer .module {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(0, 242, 254, 0.2) 100%);
+  border-color: rgba(79, 172, 254, 0.5);
 }
 
-.module {
-  transition: all 0.3s ease;
-  cursor: pointer;
+.input-layer .module:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 30px rgba(79, 172, 254, 0.5);
 }
 
-.module:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
+.process-layer .module {
+  background: linear-gradient(135deg, rgba(250, 112, 154, 0.2) 0%, rgba(254, 225, 64, 0.2) 100%);
+  border-color: rgba(250, 112, 154, 0.5);
 }
 
-.arrow {
-  stroke-dasharray: 5;
-  animation: flow 2s linear infinite;
+.process-layer .module:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 30px rgba(250, 112, 154, 0.5);
 }
 
-@keyframes flow {
-  to {
-    stroke-dashoffset: -10;
+.core-module {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.4) 0%, rgba(236, 72, 153, 0.4) 100%) !important;
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(244, 63, 94, 0.3), 0 0 50px rgba(244, 63, 94, 0.4) !important;
+  border-color: rgba(244, 63, 94, 0.8) !important;
+}
+
+.decision-layer .module {
+  background: linear-gradient(135deg, rgba(255, 154, 0, 0.2) 0%, rgba(255, 106, 0, 0.2) 100%);
+  border-color: rgba(255, 154, 0, 0.5);
+  min-width: 300px;
+}
+
+.decision-layer .module:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 30px rgba(255, 154, 0, 0.5);
+}
+
+.execute-layer .module {
+  background: linear-gradient(135deg, rgba(11, 163, 96, 0.2) 0%, rgba(60, 186, 146, 0.2) 100%);
+  border-color: rgba(11, 163, 96, 0.5);
+}
+
+.execute-layer .module:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 30px rgba(11, 163, 96, 0.5);
+}
+
+.data-layer .module {
+  background: linear-gradient(135deg, rgba(112, 40, 228, 0.2) 0%, rgba(229, 178, 202, 0.2) 100%);
+  border-color: rgba(112, 40, 228, 0.5);
+  min-width: 300px;
+}
+
+.data-layer .module:hover {
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 30px rgba(112, 40, 228, 0.5);
+}
+
+/* 连接线 */
+.connector {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(100, 200, 255, 0.6), transparent);
+  margin: -20px auto;
+  position: relative;
+  opacity: 0.8;
+  box-shadow: 0 0 10px rgba(100, 200, 255, 0.5);
+}
+
+.connector::after {
+  content: '▼';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(100, 200, 255, 0.8);
+  font-size: 16px;
+  text-shadow: 0 0 10px rgba(100, 200, 255, 0.8);
+}
+
+/* 动画 */
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1.1);
+    box-shadow: 0 15px 35px rgba(244, 63, 94, 0.3), 0 0 50px rgba(244, 63, 94, 0.4);
+  }
+  50% { 
+    transform: scale(1.15);
+    box-shadow: 0 15px 35px rgba(244, 63, 94, 0.5), 0 0 70px rgba(244, 63, 94, 0.6);
   }
 }
 
-.pulse {
+.core-module {
   animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+.layer-title {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(100, 200, 255, 0.3);
 }
 
-/* 响应式设计 */
+/* 背景动画粒子 */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(100, 200, 255, 0.5);
+  border-radius: 50%;
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* 响应式 */
 @media (max-width: 768px) {
-  .architecture-container {
-    padding: 20px;
-    margin: 20px 0;
+  .container {
+    padding: 30px;
   }
   
-  .architecture-title {
+  h1 {
     font-size: 2em;
-    margin-bottom: 30px;
   }
   
-  .architecture-svg text {
-    font-size: 12px;
+  .module {
+    min-width: 150px;
+    padding: 20px 25px;
   }
   
-  .architecture-svg text[font-size="18"] {
-    font-size: 14px;
+  .module h3 {
+    font-size: 1.1em;
   }
   
-  .architecture-svg text[font-size="16"] {
-    font-size: 12px;
-  }
-  
-  .architecture-svg text[font-size="14"] {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .architecture-title {
-    font-size: 1.5em;
-  }
-  
-  .architecture-svg text {
-    font-size: 10px;
-  }
-  
-  .architecture-svg text[font-size="18"] {
-    font-size: 12px;
-  }
-  
-  .architecture-svg text[font-size="16"] {
-    font-size: 10px;
-  }
-  
-  .architecture-svg text[font-size="14"] {
-    font-size: 8px;
+  .module p {
+    font-size: 0.85em;
   }
 }
 </style>

@@ -38,13 +38,13 @@
         </div>
         <div class="grid grid-3">
           <div class="card card-neural fade-in">
-            <div class="feature-icon">📊</div>
-            <h3>灵活的数据架构</h3>
+            <div class="feature-icon">🧠</div>
+            <h3>强大的泛化能力</h3>
             <ul class="feature-list">
-              <li>采用LeRobot数据集标准，支持多模态数据输入</li>
-              <li>支持多视角相机视觉输入（顶部、腕部、全局等）</li>
-              <li>实时采集机器人全身状态和动作指令</li>
-              <li>可扩展支持点云、深度图像、触觉、力反馈等多维度感知信息</li>
+              <li>支持未见过物体和场景的智能适应</li>
+              <li>跨任务知识迁移，一个模型解决多种任务</li>
+              <li>自适应不同机器人形态和配置</li>
+              <li>零样本学习能力，快速适应新环境</li>
             </ul>
           </div>
           
@@ -95,8 +95,8 @@
           
           <div class="advantage-card fade-in">
             <div class="advantage-icon">🎯</div>
-            <h3>智能路由决策</h3>
-            <p>状态机与LLM双模式智能切换，根据场景自动选择最优执行策略，支持多模块协同：视觉识别接近 + VLA精准操作的组合模式。</p>
+            <h3>智能执行策略选择</h3>
+            <p>根据任务类型自动选择最优执行方案：简单任务直接使用静态脚本快速执行，复杂任务调用CavVLA模型进行智能决策，混合模式如YOLO定位+VLA精准操作的组合执行，支持状态机规则判断或LLM智能分析两种决策模式。</p>
           </div>
         </div>
       </div>
@@ -144,33 +144,6 @@
       </div>
     </section>
 
-    <!-- 性能指标 -->
-    <section class="section section-accent">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">性能指标</h2>
-          <p class="section-subtitle">数据说话，性能卓越</p>
-        </div>
-        <div class="grid grid-4">
-          <div class="performance-card fade-in">
-            <div class="performance-number">35%</div>
-            <div class="performance-label">任务成功率提升</div>
-          </div>
-          <div class="performance-card fade-in">
-            <div class="performance-number">60%</div>
-            <div class="performance-label">动作抖动减少</div>
-          </div>
-          <div class="performance-card fade-in">
-            <div class="performance-number">3小时</div>
-            <div class="performance-label">基础模型训练</div>
-          </div>
-          <div class="performance-card fade-in">
-            <div class="performance-number">&lt;100ms</div>
-            <div class="performance-label">决策延迟</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- 选择理由 -->
     <section class="section">
@@ -231,33 +204,6 @@
       </div>
     </section>
 
-    <!-- 客户案例 -->
-    <section class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">典型客户案例</h2>
-          <p class="section-subtitle">行业领先企业的信赖之选</p>
-        </div>
-        <div class="grid grid-4">
-          <div class="card fade-in">
-            <h4>智能制造领域</h4>
-            <p>某大型汽车制造商部署200+套系统</p>
-          </div>
-          <div class="card fade-in">
-            <h4>医疗康复领域</h4>
-            <p>助力康复机器人实现个性化训练方案</p>
-          </div>
-          <div class="card fade-in">
-            <h4>物流仓储领域</h4>
-            <p>日处理包裹量提升50%</p>
-          </div>
-          <div class="card fade-in">
-            <h4>科研院所</h4>
-            <p>支持10+顶级实验室的具身智能研究</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- 底部CTA -->
     <section class="section section-accent">
