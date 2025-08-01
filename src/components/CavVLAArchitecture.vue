@@ -99,44 +99,50 @@
 export default {
   name: 'CavVLAArchitecture',
   mounted() {
-    // 创建背景粒子
-    const particlesContainer = document.getElementById('particles');
-    for (let i = 0; i < 50; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = Math.random() * 100 + '%';
-      particle.style.animationDelay = Math.random() * 20 + 's';
-      particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-      particlesContainer.appendChild(particle);
-    }
-    
-    // 添加点击交互
-    document.querySelectorAll('.module').forEach(module => {
-      module.addEventListener('click', function() {
-        this.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 200);
-      });
-    });
-    
-    // 添加滚动动画
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '0';
-          entry.target.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            entry.target.style.transition = 'all 0.6s ease';
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }, 100);
+    this.$nextTick(() => {
+      // 创建背景粒子
+      const particlesContainer = document.getElementById('particles');
+      if (particlesContainer) {
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 20 + 's';
+          particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+          particlesContainer.appendChild(particle);
         }
+      }
+      
+      // 添加点击交互
+      const modules = document.querySelectorAll('.module');
+      modules.forEach(module => {
+        module.addEventListener('click', function() {
+          this.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 200);
+        });
       });
-    });
-    
-    document.querySelectorAll('.layer-section').forEach(section => {
-      observer.observe(section);
+      
+      // 添加滚动动画
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '0';
+            entry.target.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              entry.target.style.transition = 'all 0.6s ease';
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }, 100);
+          }
+        });
+      });
+      
+      const layerSections = document.querySelectorAll('.layer-section');
+      layerSections.forEach(section => {
+        observer.observe(section);
+      });
     });
   }
 }
