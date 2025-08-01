@@ -87,7 +87,7 @@
         <div class="layer-title">数据管理层</div>
         <div class="layer data-layer">
           <div class="module">
-            <h3>LeRobot数据集</h3>
+            <h3>机器人数据集</h3>
             <p>数据存储 · 优化回流 · 持续改进</p>
           </div>
         </div>
