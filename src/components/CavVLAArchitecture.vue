@@ -1,7 +1,8 @@
 <template>
-  <div class="particles" id="particles"></div>
-  
-  <div class="container">
+  <div class="architecture-wrapper">
+    <div class="particles" ref="particles"></div>
+    
+    <div class="container">
     <h1>CavVLA 系统架构</h1>
     
     <div class="architecture">
@@ -101,7 +102,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       // 创建背景粒子
-      const particlesContainer = document.getElementById('particles');
+      const particlesContainer = this.$refs.particles;
       if (particlesContainer) {
         for (let i = 0; i < 50; i++) {
           const particle = document.createElement('div');
@@ -114,7 +115,7 @@ export default {
       }
       
       // 添加点击交互
-      const modules = document.querySelectorAll('.module');
+      const modules = this.$el.querySelectorAll('.module');
       modules.forEach(module => {
         module.addEventListener('click', function() {
           this.style.transform = 'scale(0.95)';
@@ -139,7 +140,7 @@ export default {
         });
       });
       
-      const layerSections = document.querySelectorAll('.layer-section');
+      const layerSections = this.$el.querySelectorAll('.layer-section');
       layerSections.forEach(section => {
         observer.observe(section);
       });
@@ -153,6 +154,11 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.architecture-wrapper {
+  position: relative;
+  width: 100%;
 }
 
 .container {
