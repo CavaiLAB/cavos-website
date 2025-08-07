@@ -702,12 +702,12 @@ export default {
 <style scoped>
 /* Hero Section */
 .hero {
-  min-height: 65vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   background: var(--gradient-cosmic);
   position: relative;
-  padding: var(--space-20) 0 var(--space-16) 0;
+  padding: var(--space-12) 0 var(--space-16) 0;
   /* 确保不会遮挡移动端导航 */
   z-index: 1;
 }
@@ -783,6 +783,7 @@ export default {
 
 .hero-features {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-bottom: var(--space-10);

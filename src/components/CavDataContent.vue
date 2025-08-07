@@ -212,6 +212,24 @@ export default {
 /* CavData页面专用样式 */
 .cavdata-page {
   width: 100%;
+  overflow-x: hidden;
+}
+
+/* 确保所有容器不会溢出 */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+}
+
+.cavdata-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
 }
 
 /* Hero Section */
@@ -303,23 +321,30 @@ export default {
 }
 
 .data-flow {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-items: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .feature-pill {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  padding: var(--space-3) var(--space-4);
+  gap: var(--space-3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-4) var(--space-6);
   border-radius: var(--space-6);
   backdrop-filter: blur(12px);
   cursor: pointer;
   transition: all var(--duration-normal) var(--easing-smooth);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  min-height: 50px;
+  min-width: 120px;
+  justify-content: center;
 }
 
 .feature-pill:hover {
@@ -329,13 +354,15 @@ export default {
 }
 
 .pill-icon {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
 }
 
 .pill-text {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 500;
   font-weight: 600;
   color: var(--text-primary);
+  white-space: nowrap;
 }
 
 @keyframes floatGentle {
@@ -656,71 +683,92 @@ export default {
 }
 
 /* 响应式设计 */
+@media (max-width: 1200px) {
+  .container, .cavdata-container {
+    max-width: 1000px;
+    padding: 0 var(--space-4);
+  }
+}
+
 @media (max-width: 1024px) {
   .hero .container {
     gap: var(--space-12);
+  }
+  
+  .container, .cavdata-container {
+    max-width: 900px;
+    padding: 0 var(--space-4);
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: var(--space-8) 0 var(--space-6) 0;
+    min-height: 50vh;
+    padding: var(--space-10) 0 var(--space-6) 0;
   }
   
   .hero .container {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
     text-align: center;
-    gap: var(--space-4);
   }
   
   .hero-content {
     order: 1;
-    text-align: center;
   }
   
   .hero-visual {
     order: 2;
-    height: 250px;
+    height: auto;
+    min-height: unset;
+    padding: var(--space-2) 0;
   }
   
   .data-core {
-    font-size: 3.5rem;
-    margin-bottom: var(--space-4);
+    display: none;
+  }
+  
+  .data-animation {
+    padding: var(--space-2);
+    margin: 0;
   }
   
   .data-flow {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    max-width: 100%;
+    justify-items: center;
   }
   
   .feature-pill {
-    padding: var(--space-2) var(--space-3);
-    gap: var(--space-1);
-  }
-  
-  .pill-icon {
+    padding: var(--space-3) var(--space-4);
+    min-height: 50px;
+    min-width: 120px;
     font-size: var(--font-size-sm);
   }
   
-  .pill-text {
-    font-size: 0.6rem;
-    white-space: nowrap;
-  }
-  
-  .title-main {
-    font-size: var(--font-size-4xl);
-    margin-bottom: var(--space-1);
-  }
-  
-  .title-accent {
+  .pill-icon {
     font-size: var(--font-size-lg);
   }
   
+  .pill-text {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-5xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-xl);
+  }
+  
   .hero-description {
-    font-size: var(--font-size-base);
-    margin-bottom: var(--space-4);
+    font-size: var(--font-size-lg);
+    max-width: none;
   }
 
   .cavdata-section {
@@ -795,56 +843,63 @@ export default {
 
 @media (max-width: 480px) {
   .hero {
-    padding: var(--space-6) 0 var(--space-4) 0;
+    min-height: 40vh;
+    padding: var(--space-8) 0 var(--space-4) 0;
   }
   
   .hero .container {
-    gap: var(--space-3);
+    gap: var(--space-4);
   }
   
   .hero-visual {
-    height: 200px;
+    height: auto;
+    padding: var(--space-1) 0;
   }
   
   .data-core {
-    font-size: 2.5rem;
-    margin-bottom: var(--space-3);
+    display: none;
+  }
+  
+  .data-animation {
+    padding: var(--space-2);
+    margin: 0;
   }
   
   .data-flow {
-    gap: 0.25rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 0 var(--space-2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding: 0;
   }
   
   .feature-pill {
-    padding: var(--space-1) var(--space-2);
-    gap: 0.25rem;
-    min-width: fit-content;
-    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    min-height: 45px;
+    min-width: 100px;
+    font-size: var(--font-size-xs);
   }
   
   .pill-icon {
-    font-size: 0.7rem;
-  }
-  
-  .pill-text {
-    font-size: 0.5rem;
-  }
-  
-  .title-main {
-    font-size: var(--font-size-3xl);
-  }
-  
-  .title-accent {
     font-size: var(--font-size-base);
   }
   
+  .pill-text {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-lg);
+  }
+  
   .hero-description {
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--space-3);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
   }
   
   .cavdata-section {

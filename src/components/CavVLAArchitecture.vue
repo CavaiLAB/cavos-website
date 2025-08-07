@@ -399,24 +399,166 @@ h1 {
 /* 响应式 */
 @media (max-width: 768px) {
   .container {
-    padding: 30px;
+    padding: 20px;
   }
   
   h1 {
-    font-size: 2em;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+  
+  .architecture {
+    gap: 25px;
+  }
+  
+  .layer {
+    gap: 15px;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 5px;
   }
   
   .module {
-    min-width: 150px;
-    padding: 20px 25px;
+    min-width: 100px;
+    max-width: 120px;
+    padding: 12px 8px;
+    flex-shrink: 0;
+    border-radius: 10px;
   }
   
   .module h3 {
-    font-size: 1.1em;
+    font-size: 0.85em;
+    margin-bottom: 6px;
+    line-height: 1.2;
   }
   
   .module p {
-    font-size: 0.85em;
+    font-size: 0.7em;
+    line-height: 1.3;
+    opacity: 0.9;
+  }
+  
+  .layer-title {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  
+  .connector {
+    height: 25px;
+    margin: -12px auto;
+  }
+  
+  .connector::after {
+    font-size: 12px;
+    bottom: -8px;
+  }
+  
+  /* 特殊模块调整 */
+  .decision-layer .module,
+  .data-layer .module {
+    min-width: 140px;
+    max-width: 160px;
+    padding: 15px 10px;
+  }
+  
+  .decision-layer .module h3,
+  .data-layer .module h3 {
+    font-size: 0.9em;
+  }
+  
+  .decision-layer .module p,
+  .data-layer .module p {
+    font-size: 0.75em;
+  }
+  
+  .core-module {
+    transform: scale(1.05) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+    margin: 20px auto;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 25px;
+  }
+  
+  .architecture {
+    gap: 20px;
+  }
+  
+  .layer {
+    gap: 8px;
+    padding: 0 2px;
+  }
+  
+  .module {
+    min-width: 85px;
+    max-width: 100px;
+    padding: 10px 6px;
+  }
+  
+  .module h3 {
+    font-size: 0.75em;
+    margin-bottom: 4px;
+  }
+  
+  .module p {
+    font-size: 0.6em;
+    line-height: 1.2;
+  }
+  
+  .layer-title {
+    font-size: 0.8em;
+    margin-bottom: 12px;
+  }
+  
+  .connector {
+    height: 20px;
+    margin: -10px auto;
+  }
+  
+  /* 特殊模块进一步调整 */
+  .decision-layer .module,
+  .data-layer .module {
+    min-width: 120px;
+    max-width: 140px;
+    padding: 12px 8px;
+  }
+  
+  .decision-layer .module h3,
+  .data-layer .module h3 {
+    font-size: 0.8em;
+  }
+  
+  .decision-layer .module p,
+  .data-layer .module p {
+    font-size: 0.65em;
+  }
+  
+  .core-module {
+    transform: scale(1.02) !important;
+  }
+  
+  /* 确保水平滚动时的样式 */
+  .layer::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .layer::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  .layer::-webkit-scrollbar-thumb {
+    background: rgba(100, 200, 255, 0.5);
+    border-radius: 2px;
   }
 }
 </style>

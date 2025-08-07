@@ -268,6 +268,31 @@ export default {
 <style scoped>
 .cavvla-content {
   width: 100%;
+  overflow-x: hidden;
+}
+
+/* 确保所有容器不会溢出 */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+}
+
+/* 网格系统优化 */
+.grid {
+  display: grid;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* Hero Section */
@@ -352,6 +377,8 @@ export default {
   justify-content: center;
   align-items: center;
   height: 350px;
+  width: 100%;
+  overflow: hidden;
 }
 
 .vla-animation {
@@ -365,39 +392,47 @@ export default {
 }
 
 .vla-flow {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-items: center;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .feature-pill {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  padding: var(--space-3) var(--space-4);
+  gap: var(--space-3);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-4) var(--space-6);
   border-radius: var(--space-6);
   backdrop-filter: blur(12px);
   cursor: pointer;
   transition: all var(--duration-normal) var(--easing-smooth);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  min-height: 50px;
+  min-width: 120px;
+  justify-content: center;
 }
 
 .feature-pill:hover {
-  border-color: var(--border-neural);
-  box-shadow: var(--shadow-neural);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.3);
   transform: translateY(-2px);
 }
 
 .pill-icon {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
 }
 
 .pill-text {
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--text-primary);
+  white-space: nowrap;
 }
 
 
@@ -635,9 +670,30 @@ export default {
 }
 
 /* 响应式设计 */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+    padding: 0 var(--space-4);
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .hero .container {
     gap: var(--space-12);
+  }
+  
+  .container {
+    max-width: 900px;
+    padding: 0 var(--space-4);
+  }
+  
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -717,45 +773,370 @@ export default {
 }
 
 @media (max-width: 480px) {
+  .hero {
+    min-height: 40vh;
+    padding: var(--space-8) 0 var(--space-4) 0;
+  }
+  
+  .hero .container {
+    gap: var(--space-4);
+  }
+  
   .hero-visual {
-    height: 250px;
+    height: auto;
+    padding: var(--space-1) 0;
   }
   
   .vla-core {
-    font-size: 3rem;
+    display: none;
   }
   
   .vla-flow {
-    gap: 0.25rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 0 var(--space-2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding: 0;
   }
   
   .feature-pill {
-    padding: var(--space-1) var(--space-2);
-    gap: 0.25rem;
-    min-width: fit-content;
-    flex-shrink: 0;
+    padding: var(--space-2) var(--space-3);
+    min-height: 45px;
+    min-width: 100px;
+    font-size: var(--font-size-xs);
   }
   
   .pill-icon {
-    font-size: 0.7rem;
+    font-size: var(--font-size-base);
   }
   
   .pill-text {
-    font-size: 0.5rem;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
   }
   
   .performance-number {
     font-size: var(--font-size-4xl);
   }
   
-  .reason-number {
-    width: 40px;
-    height: 40px;
+  .reason-badge {
+    width: 35px;
+    height: 35px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .section {
+    padding: var(--space-12) 0;
+  }
+  
+  .section-header {
+    margin-bottom: var(--space-8);
+  }
+  
+  .reasons-grid {
+    gap: var(--space-4);
+  }
+  
+  .reason-card {
+    padding: var(--space-5);
+  }
+  
+  /* 480px以下进一步优化 */
+  .card {
+    padding: var(--space-5);
+    margin-bottom: var(--space-3);
+  }
+  
+  .feature-icon {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-4);
+  }
+  
+  .card h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-3);
+  }
+  
+  .feature-list li {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--space-2);
+    padding-left: var(--space-3);
+  }
+  
+  .advantage-card {
+    padding: var(--space-5);
+  }
+  
+  .advantage-card h3 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-2);
+  }
+  
+  .advantage-card p {
+    font-size: var(--font-size-xs);
+    line-height: 1.5;
+  }
+  
+  .section-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--space-3);
+  }
+  
+  .section-subtitle {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-6);
+  }
+  
+  .reason-card h4 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-2);
+  }
+  
+  .reason-card p {
+    font-size: var(--font-size-xs);
+    line-height: 1.4;
+  }
+  
+  .reason-highlight {
+    font-size: var(--font-size-xs);
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .cta-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+  }
+  
+  .cta-description {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-6);
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+    padding: var(--space-10) 0 var(--space-6) 0;
+  }
+  
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  
+  .hero-content {
+    order: 1;
+  }
+  
+  .hero-visual {
+    order: 2;
+    height: auto;
+    min-height: unset;
+    padding: var(--space-2) 0;
+  }
+  
+  .vla-core {
+    display: none;
+  }
+  
+  .vla-animation {
+    padding: var(--space-2);
+    margin: 0;
+  }
+  
+  .vla-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    max-width: 100%;
+    justify-items: center;
+  }
+  
+  .feature-pill {
+    padding: var(--space-3) var(--space-4);
+    min-height: 50px;
+    min-width: 120px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .pill-icon {
     font-size: var(--font-size-lg);
+  }
+  
+  .pill-text {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-5xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-lg);
+    max-width: none;
+  }
+  
+  /* 移动端网格优化 */
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  /* 卡片样式优化 */
+  .card {
+    padding: var(--space-6);
+    margin-bottom: var(--space-4);
+    border-radius: var(--space-5);
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.08) 0%, 
+      rgba(255, 255, 255, 0.04) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 12px 40px rgba(0, 212, 255, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  /* 特色图标优化 */
+  .feature-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-5);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  }
+  
+  /* 标题优化 */
+  .card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+    text-align: center;
+  }
+  
+  /* 列表样式优化 */
+  .feature-list {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .feature-list li {
+    margin-bottom: var(--space-3);
+    padding-left: var(--space-4);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  
+  .feature-list li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    color: var(--color-neural);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* 优势卡片优化 */
+  .advantage-card {
+    padding: var(--space-6);
+    text-align: center;
+    background: linear-gradient(135deg, 
+      rgba(0, 212, 255, 0.05) 0%, 
+      rgba(255, 139, 53, 0.05) 100%);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: var(--space-5);
+    backdrop-filter: blur(16px);
+  }
+  
+  .advantage-card h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+    color: var(--text-primary);
+  }
+  
+  .advantage-card p {
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  
+  /* 应用场景卡片优化 */
+  .app-icon {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-4);
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  }
+  
+  /* 区域标题优化 */
+  .section-title {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-4);
+    text-align: center;
+  }
+  
+  .section-subtitle {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-8);
+    text-align: center;
+    color: var(--text-secondary);
+  }
+  
+  /* 选择理由网格优化 */
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+  
+  .reason-card {
+    padding: var(--space-6);
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.06) 0%, 
+      rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--space-4);
+    backdrop-filter: blur(16px);
+  }
+  
+  .reason-badge {
+    width: 32px;
+    height: 32px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .reason-card h4 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-3);
+  }
+  
+  .reason-card p {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
   }
 }
 </style>

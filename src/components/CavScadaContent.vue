@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cavscada-content">
     <!-- Hero Section -->
     <section class="hero quantum-particles">
       <div class="container">
@@ -19,10 +19,22 @@
           <div class="scada-animation">
             <div class="scada-core">🏭</div>
             <div class="scada-flow">
-              <div class="flow-node">🔌 多协议解析</div>
-              <div class="flow-node">📊 数据采集</div>
-              <div class="flow-node">🤖 智能问答</div>
-              <div class="flow-node">🎛️ 可视化组态</div>
+              <div class="feature-pill">
+                <span class="pill-icon">🔌</span>
+                <span class="pill-text">多协议解析</span>
+              </div>
+              <div class="feature-pill">
+                <span class="pill-icon">📊</span>
+                <span class="pill-text">数据采集</span>
+              </div>
+              <div class="feature-pill">
+                <span class="pill-icon">🤖</span>
+                <span class="pill-text">智能问答</span>
+              </div>
+              <div class="feature-pill">
+                <span class="pill-icon">🎛️</span>
+                <span class="pill-text">可视化组态</span>
+              </div>
             </div>
           </div>
         </div>
@@ -315,6 +327,20 @@ export default {
 </script>
 
 <style scoped>
+.cavscada-content {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* 确保所有容器不会溢出 */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+}
+
 /* Hero Section */
 .hero {
   min-height: 65vh;
@@ -434,15 +460,33 @@ export default {
   flex-wrap: wrap;
 }
 
-.flow-node {
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   background: var(--bg-surface);
-  border: 1px solid var(--border-neural);
-  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--border-color);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--space-6);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--easing-smooth);
+}
+
+.feature-pill:hover {
+  border-color: var(--border-neural);
+  box-shadow: var(--shadow-neural);
+  transform: translateY(-2px);
+}
+
+.pill-icon {
+  font-size: var(--font-size-base);
+}
+
+.pill-text {
   font-size: var(--font-size-sm);
   font-weight: 600;
-  color: var(--color-neural);
-  backdrop-filter: blur(12px);
+  color: var(--text-primary);
 }
 
 @keyframes floatGentle {
@@ -1502,8 +1546,64 @@ export default {
 }
 
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.5rem;
+  .hero {
+    min-height: 40vh;
+    padding: var(--space-8) 0 var(--space-4) 0;
+  }
+  
+  .hero .container {
+    gap: var(--space-4);
+  }
+  
+  .hero-visual {
+    height: auto;
+    padding: var(--space-1) 0;
+  }
+  
+  .scada-core {
+    display: none;
+  }
+  
+  .scada-animation {
+    padding: var(--space-2);
+    margin: 0;
+  }
+  
+  .scada-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+    padding: 0;
+  }
+  
+  .feature-pill {
+    padding: var(--space-2) var(--space-3);
+    min-height: 45px;
+    min-width: 100px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .pill-icon {
+    font-size: var(--font-size-base);
+  }
+  
+  .pill-text {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
   }
   
   .section-title {
@@ -1535,6 +1635,76 @@ export default {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(8, 1fr);
     gap: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+    padding: var(--space-10) 0 var(--space-6) 0;
+  }
+  
+  .hero .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    text-align: center;
+  }
+  
+  .hero-content {
+    order: 1;
+  }
+  
+  .hero-visual {
+    order: 2;
+    height: auto;
+    min-height: unset;
+    padding: var(--space-2) 0;
+  }
+  
+  .scada-core {
+    display: none;
+  }
+  
+  .scada-animation {
+    padding: var(--space-2);
+    margin: 0;
+  }
+  
+  .scada-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+    max-width: 100%;
+    justify-items: center;
+  }
+  
+  .feature-pill {
+    padding: var(--space-3) var(--space-4);
+    min-height: 50px;
+    min-width: 120px;
+    font-size: var(--font-size-sm);
+  }
+  
+  .pill-icon {
+    font-size: var(--font-size-lg);
+  }
+  
+  .pill-text {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-5xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-lg);
+    max-width: none;
   }
 }
 </style>
