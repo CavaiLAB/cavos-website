@@ -160,6 +160,23 @@ export default {
 .architecture-wrapper {
   position: relative;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 隐藏所有滚动条 */
+.architecture-wrapper::-webkit-scrollbar,
+.container::-webkit-scrollbar,
+.architecture::-webkit-scrollbar {
+  display: none;
+}
+
+.architecture-wrapper,
+.container,
+.architecture {
+  -ms-overflow-style: none;  /* IE和Edge */
+  scrollbar-width: none;     /* Firefox */
+  overflow: hidden;
 }
 
 .container {
@@ -170,10 +187,14 @@ export default {
   padding: 50px;
   max-width: 1200px;
   width: 100%;
+  height: calc(100vh - 80px);
   backdrop-filter: blur(20px);
   margin: 40px auto;
   position: relative;
   color: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -398,17 +419,28 @@ h1 {
 
 /* 响应式 */
 @media (max-width: 768px) {
+  .architecture-wrapper {
+    height: 100vh;
+  }
+  
   .container {
-    padding: 20px;
+    padding: 15px;
+    margin: 10px auto;
+    height: calc(100vh - 20px);
+    overflow-y: hidden;
   }
   
   h1 {
-    font-size: 1.8em;
-    margin-bottom: 30px;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    flex-shrink: 0;
   }
   
   .architecture {
-    gap: 25px;
+    gap: 15px;
+    flex: 1;
+    justify-content: space-evenly;
+    overflow: hidden;
   }
   
   .layer {
@@ -446,13 +478,13 @@ h1 {
   }
   
   .connector {
-    height: 25px;
-    margin: -12px auto;
+    height: 15px;
+    margin: -8px auto;
   }
   
   .connector::after {
-    font-size: 12px;
-    bottom: -8px;
+    font-size: 10px;
+    bottom: -6px;
   }
   
   /* 特殊模块调整 */
@@ -479,18 +511,28 @@ h1 {
 }
 
 @media (max-width: 480px) {
+  .architecture-wrapper {
+    height: 100vh;
+  }
+  
   .container {
-    padding: 15px;
-    margin: 20px auto;
+    padding: 10px;
+    margin: 5px auto;
+    height: calc(100vh - 10px);
+    overflow: hidden;
   }
   
   h1 {
-    font-size: 1.5em;
-    margin-bottom: 25px;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    flex-shrink: 0;
   }
   
   .architecture {
-    gap: 20px;
+    gap: 10px;
+    flex: 1;
+    justify-content: space-evenly;
+    overflow: hidden;
   }
   
   .layer {
@@ -520,8 +562,13 @@ h1 {
   }
   
   .connector {
-    height: 20px;
-    margin: -10px auto;
+    height: 8px;
+    margin: -4px auto;
+  }
+  
+  .connector::after {
+    font-size: 8px;
+    bottom: -4px;
   }
   
   /* 特殊模块进一步调整 */
@@ -546,19 +593,14 @@ h1 {
     transform: scale(1.02) !important;
   }
   
-  /* 确保水平滚动时的样式 */
+  /* 隐藏滚动条但保持滚动功能 */
   .layer::-webkit-scrollbar {
-    height: 4px;
+    display: none;
   }
   
-  .layer::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-  }
-  
-  .layer::-webkit-scrollbar-thumb {
-    background: rgba(100, 200, 255, 0.5);
-    border-radius: 2px;
+  .layer {
+    -ms-overflow-style: none;  /* IE和Edge */
+    scrollbar-width: none;     /* Firefox */
   }
 }
 </style>
