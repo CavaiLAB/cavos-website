@@ -517,8 +517,17 @@ export default {
 @media (max-width: 768px) {
   .hero .container {
     grid-template-columns: 1fr;
-    text-align: center;
     gap: var(--space-8);
+  }
+  
+  .hero-content {
+    order: 1;
+    text-align: center;
+  }
+  
+  .hero-visual {
+    order: 2;
+    padding: var(--space-2) 0;
   }
   
   .hero-description {
@@ -530,13 +539,13 @@ export default {
     justify-content: center;
   }
   
-  .hero-content {
-    order: 1;
+  .title-main {
+    white-space: nowrap;
+    font-size: var(--font-size-3xl);
   }
   
-  .hero-visual {
-    order: 2;
-    padding: var(--space-2) 0;
+  .title-accent {
+    font-size: var(--font-size-xl);
   }
   
   .intelligence-svg-wrapper {
@@ -548,14 +557,6 @@ export default {
   .intelligence-svg {
     width: 100%;
     height: auto;
-  }
-  
-  .title-main {
-    font-size: var(--font-size-5xl);
-  }
-  
-  .title-accent {
-    font-size: var(--font-size-xl);
   }
   
   .products-grid {
