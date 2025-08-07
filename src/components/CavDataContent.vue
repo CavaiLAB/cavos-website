@@ -639,8 +639,13 @@ export default {
     gap: var(--space-10);
   }
   
+  .hero-content {
+    order: 1;
+    text-align: center;
+  }
+  
   .hero-visual {
-    order: -1;
+    order: 2;
     height: 300px;
   }
   
