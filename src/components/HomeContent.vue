@@ -5,11 +5,11 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-badge">
-            <span class="badge-text">具身智能平台</span>
+            <span class="badge-text">Collective Agent uniVerse</span>
           </div>
           <h1 class="hero-title">
-            <span class="title-main">智昌具身智能平台</span>
-            <span class="title-accent">连接现实与数字世界的桥梁</span>
+            <span class="title-main">具身智能体互联网</span>
+            <span class="title-accent">Internet of Embodied Agents</span>
           </h1>
           <p class="hero-description">
             基于三元控制技术，构建智能机器人生态系统。
@@ -35,8 +35,33 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="neural-network">
-            <img src="../img/3d.png" alt="3D Visualization" class="hero-image" />
+          <div class="intelligence-table-wrapper">
+            <table class="intelligence-table">
+              <thead>
+                <tr>
+                  <th class="level-column">智能等级</th>
+                  <th class="name-column">层级名称</th>
+                  <th class="tech-column">核心技术</th>
+                  <th class="scenario-column">应用场景</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="level in intelligenceLevels" :key="level.level" class="intelligence-row">
+                  <td class="level-cell">
+                    <div class="level-badge">{{ level.level }}</div>
+                  </td>
+                  <td class="name-cell">
+                    <div class="level-name">{{ level.name }}</div>
+                  </td>
+                  <td class="tech-cell">
+                    <div class="level-tech">{{ level.tech }}</div>
+                  </td>
+                  <td class="scenario-cell">
+                    <div class="level-scenario">{{ level.scenario }}</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -47,7 +72,7 @@
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">产品矩阵</h2>
-          <p class="section-subtitle">构建完整的具身智能生态系统</p>
+          <p class="section-subtitle">构建完整的具身智能体互联网生态系统</p>
         </div>
         <div class="products-grid">
           <div 
@@ -90,7 +115,7 @@ export default {
         id: 'cavos',
         name: 'CavOS',
         icon: '🤖',
-        description: '具身智能AaaS平台，智能机器人云边协同操作系统',
+        description: '具身智能体互联网 AaaS平台，智能机器人云边协同操作系统',
         features: ['云边协同', '多智能体', '统一操作系统']
       },
       {
@@ -116,8 +141,18 @@ export default {
       }
     ])
 
+    const intelligenceLevels = ref([
+      { level: 'L5', name: '具身智能体互联网', tech: '系统化智能体基础设施/元智能体MetaAgent', scenario: '智慧工厂、智慧城市' },
+      { level: 'L4', name: '多智能体系统MAS', tech: 'MCP/A2A/ACP协议', scenario: '仓储协同、群体作业' },
+      { level: 'L3', name: '智能体工作流', tech: '6大工作流模式', scenario: '复杂任务编排' },
+      { level: 'L2', name: '记忆空间', tech: '检索增强RAG', scenario: '知识问答、经验复用' },
+      { level: 'L1', name: '工具调用', tech: '结构化输出', scenario: '基础任务执行' },
+      { level: 'L0', name: '端到端模型', tech: '提示词工程+LLM', scenario: '自然语言交互' }
+    ])
+
     return {
-      products
+      products,
+      intelligenceLevels
     }
   }
 }
@@ -233,24 +268,173 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 450px;
+  height: auto;
+  padding: var(--space-4) 0;
 }
 
-.neural-network {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.intelligence-table-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--space-6);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-neural);
   width: 100%;
-  height: 400px;
-  overflow: visible;
+  max-width: 100%;
+  transition: all 0.4s ease;
 }
 
-.hero-image {
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 320px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
+.intelligence-table-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+}
+
+.intelligence-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-sm);
+}
+
+.intelligence-table thead {
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);
+  position: relative;
+}
+
+.intelligence-table thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-neural);
+  opacity: 0.5;
+}
+
+.intelligence-table th {
+  padding: var(--space-4) var(--space-3);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border-neural);
+}
+
+.intelligence-table th:first-child {
+  text-align: center;
+  width: 80px;
+  border-top-left-radius: var(--space-2);
+}
+
+.intelligence-table th:last-child {
+  border-top-right-radius: var(--space-2);
+}
+
+.intelligence-row {
+  transition: all var(--duration-normal) var(--easing-smooth);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.intelligence-row:hover {
+  background: rgba(0, 212, 255, 0.05);
+  transform: translateX(3px);
+  box-shadow: -3px 0 0 var(--color-neural);
+}
+
+.intelligence-row:last-child {
+  border-bottom: none;
+}
+
+.intelligence-table td {
+  padding: var(--space-4) var(--space-3);
+  vertical-align: middle;
+}
+
+.level-cell {
+  text-align: center;
+  width: 80px;
+}
+
+.level-badge {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.8) 0%, rgba(0, 212, 255, 0.4) 100%);
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: var(--font-size-base);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.intelligence-row:hover .level-badge {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 212, 255, 0.4);
+}
+
+.level-badge::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: var(--gradient-neural);
+  z-index: -1;
+  opacity: 0.2;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.2; }
+  50% { transform: scale(1.1); opacity: 0.3; }
+  100% { transform: scale(1); opacity: 0.2; }
+}
+
+.level-name {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-1);
+  background: var(--gradient-neural);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.intelligence-row:hover .level-name {
+  transform: translateX(3px);
+}
+
+.level-tech {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.intelligence-row:hover .level-tech {
+  color: rgba(0, 212, 255, 0.8);
+}
+
+.level-scenario {
+  color: var(--text-muted);
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.intelligence-row:hover .level-scenario {
+  color: var(--text-secondary);
 }
 
 /* Product Selection */
@@ -350,19 +534,13 @@ export default {
   
   .hero-visual {
     order: -1;
-    height: 250px;
+    padding: var(--space-2) 0;
+    overflow-x: auto;
   }
   
-  .neural-network {
-    width: 90%;
-    height: 230px;
-    overflow: visible;
-  }
-  
-  .network-nodes {
-    width: 120%;
-    background-size: contain;
-    background-position: center center;
+  .intelligence-table-wrapper {
+    min-width: 600px;
+    margin: 0 auto;
   }
   
   .title-main {
@@ -381,39 +559,34 @@ export default {
 
 @media (max-width: 480px) {
   .hero-visual {
-    height: 250px;
+    padding: var(--space-1) 0;
   }
   
-  .neural-network {
-    width: 90%;
-    height: 220px;
-    overflow: visible;
+  .intelligence-table-wrapper {
+    min-width: 600px;
   }
   
-  .hero-image {
-    min-width: 280px;
-    width: auto;
-    max-height: none;
+  .intelligence-table th {
+    font-size: var(--font-size-xs);
+    padding: var(--space-2) var(--space-1);
   }
   
-  .network-nodes {
-    width: 130%;
-    background-size: contain;
-    background-position: center center;
+  .intelligence-table td {
+    padding: var(--space-2) var(--space-1);
   }
   
-  .network-core {
-    width: 60px;
-    height: 60px;
+  .level-badge {
+    width: 30px;
+    height: 30px;
+    font-size: var(--font-size-sm);
   }
   
-  .core-inner {
-    width: 45px;
-    height: 45px;
+  .level-name {
+    font-size: var(--font-size-xs);
   }
   
-  .core-text {
-    font-size: var(--font-size-base);
+  .level-tech, .level-scenario {
+    font-size: var(--font-size-xs);
   }
 }
 </style>

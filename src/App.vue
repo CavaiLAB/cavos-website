@@ -17,8 +17,8 @@
               </svg>
             </div>
             <div class="brand-text">
-              <h2>智昌具身智能平台</h2>
-              <span class="brand-subtitle">连接现实与数字世界</span>
+              <h2>具身智能体互联网</h2>
+              <span class="brand-subtitle">Internet of Embodied Agents</span>
             </div>
           </div>
           <div class="nav-menu" :class="{ 'nav-menu-open': mobileMenuOpen }">
@@ -202,7 +202,7 @@
       <div class="container">
         <div class="footer-content">
           <div class="footer-logo">
-            <h3>智昌具身智能平台</h3>
+            <h3>具身智能体互联网</h3>
             <p>让智能无处不在</p>
           </div>
           <div class="footer-info">

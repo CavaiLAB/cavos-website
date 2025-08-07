@@ -592,8 +592,8 @@ export default {
     ])
 
     const intelligenceLevels = ref([
-      { level: 'L5', name: '智能体互联网IOA', tech: '系统化智能体基础设施', scenario: '智慧工厂、智慧城市' },
-      { level: 'L4', name: '多智能体系统MAS', tech: 'CMP/CCP/A2A协议', scenario: '仓储协同、群体作业' },
+      { level: 'L5', name: '具身智能体互联网', tech: '系统化智能体基础设施/元智能体MetaAgent', scenario: '智慧工厂、智慧城市' },
+      { level: 'L4', name: '多智能体系统MAS', tech: 'MCP/A2A/ACP协议', scenario: '仓储协同、群体作业' },
       { level: 'L3', name: '智能体工作流', tech: '6大工作流模式', scenario: '复杂任务编排' },
       { level: 'L2', name: '记忆空间', tech: '检索增强RAG', scenario: '知识问答、经验复用' },
       { level: 'L1', name: '工具调用', tech: '结构化输出', scenario: '基础任务执行' },
