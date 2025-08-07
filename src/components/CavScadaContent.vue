@@ -1366,6 +1366,21 @@ export default {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  .hero-content {
+    order: 1;
+    text-align: center;
+  }
+  
+  .hero-visual {
+    order: 2;
+    height: 300px;
+  }
+  
   /* 英雄区域响应式 */
   .hero-title {
     font-size: 3rem;
