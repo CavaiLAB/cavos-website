@@ -35,33 +35,8 @@
           </div>
         </div>
         <div class="hero-visual">
-          <div class="intelligence-table-wrapper">
-            <table class="intelligence-table">
-              <thead>
-                <tr>
-                  <th class="level-column">智能等级</th>
-                  <th class="name-column">层级名称</th>
-                  <th class="tech-column">核心技术</th>
-                  <th class="scenario-column">应用场景</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="level in intelligenceLevels" :key="level.level" class="intelligence-row">
-                  <td class="level-cell">
-                    <div class="level-badge">{{ level.level }}</div>
-                  </td>
-                  <td class="name-cell">
-                    <div class="level-name">{{ level.name }}</div>
-                  </td>
-                  <td class="tech-cell">
-                    <div class="level-tech">{{ level.tech }}</div>
-                  </td>
-                  <td class="scenario-cell">
-                    <div class="level-scenario">{{ level.scenario }}</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="intelligence-svg-wrapper">
+            <img src="/src/img/intelligence-table.svg" alt="智能等级表格" class="intelligence-svg" />
           </div>
         </div>
       </div>
@@ -98,7 +73,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 export default {
   name: 'HomeContent',
@@ -110,6 +85,13 @@ export default {
   },
   emits: ['product-change'],
   setup() {
+    // 组件挂载后初始化粒子效果
+    onMounted(() => {
+      if (window.reinitParticles) {
+        window.reinitParticles()
+      }
+    })
+    
     const products = ref([
       {
         id: 'cavos',
@@ -193,12 +175,11 @@ export default {
   background: rgba(0, 212, 255, 0.1);
   border: 1px solid var(--border-neural);
   color: var(--color-neural);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-5);
   border-radius: var(--space-6);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .hero-title {
@@ -272,7 +253,7 @@ export default {
   padding: var(--space-4) 0;
 }
 
-.intelligence-table-wrapper {
+.intelligence-svg-wrapper {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--space-6);
@@ -282,11 +263,19 @@ export default {
   width: 100%;
   max-width: 100%;
   transition: all 0.4s ease;
+  padding: var(--space-4);
 }
 
-.intelligence-table-wrapper:hover {
+.intelligence-svg-wrapper:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+}
+
+.intelligence-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--space-2);
 }
 
 .intelligence-table {
@@ -532,15 +521,33 @@ export default {
     gap: var(--space-8);
   }
   
-  .hero-visual {
-    order: -1;
-    padding: var(--space-2) 0;
-    overflow-x: auto;
+  .hero-description {
+    text-align: center;
+    margin: 0 auto var(--space-8) auto;
   }
   
-  .intelligence-table-wrapper {
-    min-width: 600px;
+  .hero-features {
+    justify-content: center;
+  }
+  
+  .hero-content {
+    order: 1;
+  }
+  
+  .hero-visual {
+    order: 2;
+    padding: var(--space-2) 0;
+  }
+  
+  .intelligence-svg-wrapper {
     margin: 0 auto;
+    border-radius: var(--space-4);
+    padding: var(--space-3);
+  }
+  
+  .intelligence-svg {
+    width: 100%;
+    height: auto;
   }
   
   .title-main {
@@ -560,33 +567,18 @@ export default {
 @media (max-width: 480px) {
   .hero-visual {
     padding: var(--space-1) 0;
+    margin: 0 -var(--space-2);
   }
   
-  .intelligence-table-wrapper {
-    min-width: 600px;
+  .intelligence-svg-wrapper {
+    margin: 0 var(--space-2);
+    padding: var(--space-2);
   }
   
-  .intelligence-table th {
-    font-size: var(--font-size-xs);
-    padding: var(--space-2) var(--space-1);
-  }
-  
-  .intelligence-table td {
-    padding: var(--space-2) var(--space-1);
-  }
-  
-  .level-badge {
-    width: 30px;
-    height: 30px;
-    font-size: var(--font-size-sm);
-  }
-  
-  .level-name {
-    font-size: var(--font-size-xs);
-  }
-  
-  .level-tech, .level-scenario {
-    font-size: var(--font-size-xs);
+  .intelligence-svg {
+    width: 100%;
+    height: auto;
+    min-width: auto;
   }
 }
 </style>

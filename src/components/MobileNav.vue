@@ -4,7 +4,7 @@
     <div class="nav-header">
       <div class="nav-brand">
         <div class="brand-icon">智昌</div>
-        <div class="brand-text">智昌具身智能</div>
+        <div class="brand-text">具身智能体互联网</div>
       </div>
       <div class="nav-toggle" @click="toggleNav">
         <span></span>

@@ -9,12 +9,7 @@
         <div class="nav-content">
           <div class="nav-brand">
             <div class="brand-icon">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="6" fill="currentColor" opacity="0.2"/>
-                <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1" fill="none"/>
-                <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="0.5" fill="none" opacity="0.5"/>
-                <circle cx="16" cy="16" r="2" fill="currentColor"/>
-              </svg>
+              <img src="/src/img/logo.png" alt="Logo" width="48" height="48" />
             </div>
             <div class="brand-text">
               <h2>具身智能体互联网</h2>
@@ -335,6 +330,11 @@ export default {
           }
         })
       }, 1000)
+      
+      // 初始化粒子效果
+      if (window.reinitParticles) {
+        window.reinitParticles()
+      }
     })
 
     return {
@@ -381,7 +381,6 @@ export default {
 
 .brand-icon {
   color: var(--color-neural);
-  animation: orbitalRotate 8s linear infinite;
 }
 
 .brand-text h2 {
