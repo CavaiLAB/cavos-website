@@ -18,12 +18,24 @@
         <div class="hero-visual">
           <div class="data-animation">
             <div class="data-core">📊</div>
-            <div class="data-flow">
-              <div class="flow-node">🔗 智能数据融合</div>
-              <div class="flow-node">🔄 全流程自动化</div>
-              <div class="flow-node">🧠 智能决策树搜索</div>
-              <div class="flow-node">⚡ 实时洞察</div>
+          <div class="data-flow">
+            <div class="feature-pill">
+              <span class="pill-icon">🔗</span>
+              <span class="pill-text">智能数据融合</span>
             </div>
+            <div class="feature-pill">
+              <span class="pill-icon">🔄</span>
+              <span class="pill-text">全流程自动化</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-icon">🧠</span>
+              <span class="pill-text">智能决策树搜索</span>
+            </div>
+            <div class="feature-pill">
+              <span class="pill-icon">⚡</span>
+              <span class="pill-text">实时洞察</span>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -297,15 +309,33 @@ export default {
   flex-wrap: wrap;
 }
 
-.flow-node {
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   background: var(--bg-surface);
-  border: 1px solid var(--border-neural);
-  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--border-color);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--space-6);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--easing-smooth);
+}
+
+.feature-pill:hover {
+  border-color: var(--border-neural);
+  box-shadow: var(--shadow-neural);
+  transform: translateY(-2px);
+}
+
+.pill-icon {
+  font-size: var(--font-size-base);
+}
+
+.pill-text {
   font-size: var(--font-size-sm);
   font-weight: 600;
-  color: var(--color-neural);
-  backdrop-filter: blur(12px);
+  color: var(--text-primary);
 }
 
 @keyframes floatGentle {
@@ -633,10 +663,14 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .hero {
+    padding: var(--space-8) 0 var(--space-6) 0;
+  }
+  
   .hero .container {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: var(--space-10);
+    gap: var(--space-4);
   }
   
   .hero-content {
@@ -646,64 +680,195 @@ export default {
   
   .hero-visual {
     order: 2;
-    height: 300px;
+    height: 250px;
   }
   
   .data-core {
-    font-size: 4rem;
-  }
-  
-  .title-main {
-    font-size: var(--font-size-5xl);
-  }
-  
-  .title-accent {
-    font-size: var(--font-size-xl);
+    font-size: 3.5rem;
+    margin-bottom: var(--space-4);
   }
   
   .data-flow {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1);
+  }
+  
+  .feature-pill {
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-1);
+  }
+  
+  .pill-icon {
+    font-size: var(--font-size-sm);
+  }
+  
+  .pill-text {
+    font-size: 0.6rem;
+    white-space: nowrap;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-1);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-4);
+  }
+
+  .cavdata-section {
+    padding: var(--space-12) 0;
+  }
+  
+  .cavdata-advantages {
+    padding: var(--space-12) 0;
+  }
+  
+  .cavdata-applications {
+    padding: var(--space-12) 0;
+  }
+  
+  .cavdata-value {
+    padding: var(--space-12) 0;
+  }
+  
+  .cavdata-cta {
+    padding: var(--space-12) 0;
   }
 
   .cavdata-section-title {
-    font-size: 2rem;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+  }
+  
+  .cavdata-section-subtitle {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-6);
   }
 
   .cavdata-features-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .cavdata-feature-card {
+    padding: var(--space-6) var(--space-4);
   }
 
   .cavdata-advantages-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .cavdata-advantage-item {
+    padding: var(--space-6) var(--space-3);
   }
 
   .cavdata-applications-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  
+  .cavdata-application-card {
+    padding: var(--space-4);
   }
 
   .cavdata-value-stats {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-6);
   }
 
   .cavdata-cta-buttons {
     flex-direction: column;
     align-items: center;
+    gap: var(--space-3);
   }
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: var(--space-6) 0 var(--space-4) 0;
+  }
+  
+  .hero .container {
+    gap: var(--space-3);
+  }
+  
   .hero-visual {
-    height: 250px;
+    height: 200px;
   }
   
   .data-core {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3);
   }
   
-  .flow-node {
-    padding: var(--space-2) var(--space-4);
-    font-size: var(--font-size-xs);
+  .data-flow {
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 var(--space-2);
+  }
+  
+  .feature-pill {
+    padding: var(--space-1) var(--space-2);
+    gap: 0.25rem;
+    min-width: fit-content;
+    flex-shrink: 0;
+  }
+  
+  .pill-icon {
+    font-size: 0.7rem;
+  }
+  
+  .pill-text {
+    font-size: 0.5rem;
+  }
+  
+  .title-main {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .title-accent {
+    font-size: var(--font-size-base);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-3);
+  }
+  
+  .cavdata-section {
+    padding: var(--space-8) 0;
+  }
+  
+  .cavdata-advantages {
+    padding: var(--space-8) 0;
+  }
+  
+  .cavdata-applications {
+    padding: var(--space-8) 0;
+  }
+  
+  .cavdata-value {
+    padding: var(--space-8) 0;
+  }
+  
+  .cavdata-cta {
+    padding: var(--space-8) 0;
+  }
+  
+  .cavdata-container {
+    padding: 0 var(--space-3);
   }
 }
 </style>

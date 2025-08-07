@@ -19,10 +19,22 @@
           <div class="vla-animation">
             <div class="vla-core">🤖</div>
             <div class="vla-flow">
-              <div class="flow-node">👁️ 视觉感知</div>
-              <div class="flow-node">🧠 语言理解</div>
-              <div class="flow-node">🤖 动作执行</div>
-              <div class="flow-node">⚡ 智能决策</div>
+              <div class="feature-pill">
+                <span class="pill-icon">👁️</span>
+                <span class="pill-text">视觉感知</span>
+              </div>
+              <div class="feature-pill">
+                <span class="pill-icon">🧠</span>
+                <span class="pill-text">语言理解</span>
+              </div>
+              <div class="feature-pill">
+                <span class="pill-icon">🤖</span>
+                <span class="pill-text">动作执行</span>
+              </div>
+              <div class="feature-pill">
+                <span class="pill-icon">⚡</span>
+                <span class="pill-text">智能决策</span>
+              </div>
             </div>
           </div>
         </div>
@@ -359,15 +371,33 @@ export default {
   flex-wrap: wrap;
 }
 
-.flow-node {
+.feature-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   background: var(--bg-surface);
-  border: 1px solid var(--border-neural);
-  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--border-color);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--space-6);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--easing-smooth);
+}
+
+.feature-pill:hover {
+  border-color: var(--border-neural);
+  box-shadow: var(--shadow-neural);
+  transform: translateY(-2px);
+}
+
+.pill-icon {
+  font-size: var(--font-size-base);
+}
+
+.pill-text {
   font-size: var(--font-size-sm);
   font-weight: 600;
-  color: var(--color-neural);
-  backdrop-filter: blur(12px);
+  color: var(--text-primary);
 }
 
 
@@ -645,8 +675,24 @@ export default {
   }
   
   .vla-flow {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1);
+  }
+  
+  .feature-pill {
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-1);
+  }
+  
+  .pill-icon {
+    font-size: var(--font-size-sm);
+  }
+  
+  .pill-text {
+    font-size: 0.6rem;
+    white-space: nowrap;
   }
   
   .reasons-grid {
@@ -679,9 +725,27 @@ export default {
     font-size: 3rem;
   }
   
-  .flow-node {
-    padding: var(--space-2) var(--space-4);
-    font-size: var(--font-size-xs);
+  .vla-flow {
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 var(--space-2);
+  }
+  
+  .feature-pill {
+    padding: var(--space-1) var(--space-2);
+    gap: 0.25rem;
+    min-width: fit-content;
+    flex-shrink: 0;
+  }
+  
+  .pill-icon {
+    font-size: 0.7rem;
+  }
+  
+  .pill-text {
+    font-size: 0.5rem;
   }
   
   .performance-number {
