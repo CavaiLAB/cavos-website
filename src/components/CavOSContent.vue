@@ -735,6 +735,10 @@ export default {
 
 .badge-text {
   background: rgba(0, 212, 255, 0.1);
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+  white-space: nowrap;
   border: 1px solid var(--border-neural);
   color: var(--color-neural);
   padding: var(--space-2) var(--space-4);
