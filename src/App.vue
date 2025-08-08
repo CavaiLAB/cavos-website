@@ -102,9 +102,9 @@
           </div>
           
           <div class="company-stats-grid">
-            <div v-for="stat in companyStats" :key="stat.label" class="stat-card card-quantum fade-in">
+            <div v-for="stat in companyStats" :key="stat.label" class="stat-card card-quantum fade-in animated">
               <div class="stat-visual">
-                <div class="stat-number" ref="statNumber">0</div>
+                <div class="stat-number">{{ stat.value }}</div>
                 <div class="stat-unit"></div>
               </div>
               <div class="stat-label">{{ stat.label }}</div>
